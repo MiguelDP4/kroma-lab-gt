@@ -1,0 +1,2545 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Studio | Impresión UV DTF Industrial en Guatemala</title>
+  <meta name="description" content="Impresión UV DTF con relieve 3D, barniz brillante y máxima resistencia para marcas, imprentas y maquila B2B en Guatemala. Cotiza en línea por metro lineal.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       1. VARIABLES Y SISTEMA DE DISEÑO (CSS CUSTOM PROPERTIES)
+       Paleta: Azul Marino, Periwinkle, Blanco Crema con soporte Light/Dark Mode
+       ========================================================================== */
+    :root {
+      /* Colores Base de Marca */
+      --brand-navy-900: #060d1a;
+      --brand-navy-800: #0b1528;
+      --brand-navy-700: #122240;
+      --brand-navy-600: #1a315c;
+      --brand-periwinkle-light: #c7d2fe;
+      --brand-periwinkle: #818cf8;
+      --brand-periwinkle-dark: #6366f1;
+      --brand-cream: #faf7f2;
+      --brand-cream-soft: #f4efe6;
+      
+      /* Acentos UV y Efectos */
+      --uv-gradient: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 35%, #7928ca 70%, #ff0080 100%);
+      --uv-glow: rgba(129, 140, 248, 0.25);
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+
+      /* Fuentes */
+      --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Transiciones y Sombras */
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+    }
+
+    /* Tema Oscuro (Por Defecto) */
+    [data-theme="dark"] {
+      --bg-page: var(--brand-navy-900);
+      --bg-surface: var(--brand-navy-800);
+      --bg-surface-elevated: var(--brand-navy-700);
+      --bg-surface-glass: rgba(11, 21, 40, 0.85);
+      --border-color: rgba(129, 140, 248, 0.18);
+      --border-focus: var(--brand-periwinkle);
+      --text-primary: #ffffff;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(129, 140, 248, 0.12);
+      --roll-bg: #091322;
+      --roll-ruler: #334155;
+      --sticker-fill: rgba(129, 140, 248, 0.4);
+      --sticker-stroke: #818cf8;
+    }
+
+    /* Tema Claro */
+    [data-theme="light"] {
+      --bg-page: var(--brand-cream);
+      --bg-surface: #ffffff;
+      --bg-surface-elevated: var(--brand-cream-soft);
+      --bg-surface-glass: rgba(250, 247, 242, 0.9);
+      --border-color: rgba(18, 34, 64, 0.12);
+      --border-focus: var(--brand-periwinkle-dark);
+      --text-primary: var(--brand-navy-900);
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --card-shadow: 0 12px 30px -10px rgba(18, 34, 64, 0.08), 0 0 0 1px rgba(18, 34, 64, 0.06);
+      --roll-bg: #ece7de;
+      --roll-ruler: #cbd5e1;
+      --sticker-fill: rgba(99, 102, 241, 0.25);
+      --sticker-stroke: #4f46e5;
+    }
+
+    /* ==========================================================================
+       2. RESET Y ESTILOS GLOBALES
+       ========================================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    /* ==========================================================================
+       3. TIPOGRAFÍA Y COMPONENTES BASE
+       ========================================================================== */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      background: rgba(129, 140, 248, 0.12);
+      color: var(--brand-periwinkle);
+      border: 1px solid rgba(129, 140, 248, 0.3);
+      width: fit-content;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand-periwinkle);
+      box-shadow: 0 0 10px var(--brand-periwinkle);
+    }
+
+    .section-title {
+      font-size: clamp(1.85rem, 4vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      max-width: 650px;
+      margin-bottom: 2.5rem;
+    }
+
+    .text-gradient {
+      background: var(--uv-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    /* Botones */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand-periwinkle-dark) 0%, var(--brand-periwinkle) 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.55);
+    }
+
+    .btn-secondary {
+      background: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--brand-periwinkle);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+    }
+
+    .btn-whatsapp:hover {
+      background: #20bd5a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    }
+
+    /* ==========================================================================
+       4. NAVEGACIÓN Y HEADER
+       ========================================================================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-surface-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    /* Logo Vectorial Optimizado */
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      cursor: pointer;
+    }
+
+    .logo-svg-wrap {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--text-primary);
+    }
+
+    .brand-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--brand-periwinkle);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--brand-periwinkle);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    /* Theme Toggle */
+    .theme-toggle-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .theme-toggle-btn:hover {
+      border-color: var(--brand-periwinkle);
+      transform: rotate(15deg);
+    }
+
+    /* Menú móvil trigger */
+    .mobile-menu-btn {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 9px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+    }
+
+    .mobile-menu-btn span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: var(--text-primary);
+      transition: var(--transition);
+    }
+
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 76px;
+      left: 0;
+      width: 100%;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      z-index: 99;
+    }
+
+    .mobile-drawer.open {
+      display: block;
+    }
+
+    .mobile-drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      list-style: none;
+    }
+
+    /* ==========================================================================
+       5. HERO SECTION
+       ========================================================================== */
+    .hero {
+      position: relative;
+      padding: clamp(3rem, 7vw, 6rem) 0 4rem;
+      overflow: hidden;
+    }
+
+    .hero-glow-bg {
+      position: absolute;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(129, 140, 248, 0.22) 0%, rgba(99, 102, 241, 0.05) 50%, transparent 70%);
+      filter: blur(60px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin: 1.25rem 0 1.5rem;
+    }
+
+    .hero-description {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      color: var(--text-secondary);
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      text-align: left;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      border-color: var(--brand-periwinkle);
+      transform: translateY(-3px);
+    }
+
+    .stat-value {
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 800;
+      color: var(--brand-periwinkle);
+      font-family: var(--font-mono);
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      margin-top: 0.2rem;
+    }
+
+    /* ==========================================================================
+       6. SECCIÓN ¿QUÉ ES UV DTF? Y VENTAJAS
+       ========================================================================== */
+    .section-pad {
+      padding: clamp(3.5rem, 6vw, 6rem) 0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      border-color: var(--brand-periwinkle);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      background: rgba(129, 140, 248, 0.15);
+      color: var(--brand-periwinkle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.5rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card p {
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+    }
+
+    /* Comparativa vs Serigrafía / Vinil */
+    .comparison-table-wrapper {
+      margin-top: 3rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow-x: auto;
+      box-shadow: var(--card-shadow);
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      min-width: 600px;
+    }
+
+    .comparison-table th, 
+    .comparison-table td {
+      padding: 1.1rem 1.4rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.92rem;
+    }
+
+    .comparison-table th {
+      background: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .badge-check {
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .badge-cross {
+      color: var(--danger);
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       7. COTIZADOR INTERACTIVO CON SIMULADOR DE BOBINA (VANILLA JS)
+       ========================================================================== */
+    .calculator-section {
+      background: var(--bg-surface-elevated);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .calc-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .calc-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      box-shadow: var(--card-shadow);
+    }
+
+    .form-group {
+      margin-bottom: 1.35rem;
+    }
+
+    .form-label {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .form-label span.tip {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .input-control {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .input-control:focus {
+      outline: none;
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.25);
+    }
+
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* Presets de tamaño rápido */
+    .quick-sizes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.65rem;
+    }
+
+    .btn-chip {
+      padding: 0.35rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-chip:hover, .btn-chip.active {
+      border-color: var(--brand-periwinkle);
+      color: var(--brand-periwinkle);
+      background: rgba(129, 140, 248, 0.1);
+    }
+
+    /* Simulador Visual de Bobina */
+    .simulator-container {
+      background: var(--roll-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+
+    .simulator-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      margin-bottom: 0.75rem;
+      border-bottom: 1px dashed var(--roll-ruler);
+      padding-bottom: 0.4rem;
+    }
+
+    .roll-canvas-wrap {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px dashed var(--roll-ruler);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #rollCanvas {
+      width: 100%;
+      height: 200px;
+      display: block;
+    }
+
+    /* Resultados del cotizador */
+    .calc-results-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .results-breakdown {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .breakdown-row strong {
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+    }
+
+    .total-box {
+      background: var(--bg-surface-elevated);
+      border: 2px solid var(--brand-periwinkle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .total-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+    }
+
+    .total-price {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      margin: 0.25rem 0;
+    }
+
+    .unit-price-hint {
+      font-size: 0.88rem;
+      color: var(--brand-periwinkle);
+      font-weight: 600;
+    }
+
+    .minimum-notice {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      line-height: 1.45;
+    }
+
+    /* ==========================================================================
+       8. SECCIÓN DE PEDIDOS Y SUBIDA DE DISEÑO
+       ========================================================================== */
+    .order-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .file-upload-area {
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 2.25rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      background: var(--bg-surface-elevated);
+      position: relative;
+    }
+
+    .file-upload-area:hover, .file-upload-area.dragover {
+      border-color: var(--brand-periwinkle);
+      background: rgba(129, 140, 248, 0.08);
+    }
+
+    .file-upload-icon {
+      font-size: 2.75rem;
+      color: var(--brand-periwinkle);
+      margin-bottom: 0.75rem;
+    }
+
+    .file-input-hidden {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .preview-box {
+      margin-top: 1rem;
+      display: none;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.85rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      text-align: left;
+    }
+
+    .preview-thumb {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+      background: repeating-conic-gradient(#cbd5e1 0% 25%, #f1f5f9 0% 50%) 50% / 12px 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .preview-info {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .preview-filename {
+      font-weight: 600;
+      font-size: 0.88rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .preview-filesize {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .remove-file-btn {
+      background: transparent;
+      border: none;
+      color: var(--danger);
+      font-size: 1.25rem;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+
+    /* ==========================================================================
+       9. CATÁLOGO / APLICACIONES
+       ========================================================================== */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .catalog-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+    }
+
+    .catalog-card:hover {
+      border-color: var(--brand-periwinkle);
+      transform: translateY(-4px);
+    }
+
+    .catalog-img-placeholder {
+      height: 190px;
+      background: linear-gradient(135deg, var(--brand-navy-800) 0%, var(--brand-navy-700) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-periwinkle-light);
+      position: relative;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .catalog-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .catalog-body {
+      padding: 1.5rem;
+    }
+
+    .catalog-body h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .catalog-body p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      margin-bottom: 1rem;
+    }
+
+    .catalog-tag {
+      font-size: 0.8rem;
+      color: var(--brand-periwinkle);
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    /* ==========================================================================
+       10. PREGUNTAS FRECUENTES (FAQ ACORDEÓN)
+       ========================================================================== */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .faq-item.active {
+      border-color: var(--brand-periwinkle);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1.25rem 1.5rem;
+      background: transparent;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .faq-icon {
+      font-size: 1.25rem;
+      color: var(--brand-periwinkle);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 1.5rem 1.35rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* ==========================================================================
+       11. MODALES Y NOTIFICACIONES
+       ========================================================================== */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      text-align: center;
+      position: relative;
+      animation: modalIn 0.25s ease-out;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.95) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--success);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1.25rem;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-text {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+    }
+
+    /* ==========================================================================
+       12. FOOTER
+       ========================================================================== */
+    .footer {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-color);
+      padding: 3.5rem 0 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      margin-top: 0.85rem;
+      max-width: 380px;
+    }
+
+    .footer-links h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--brand-periwinkle);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-color);
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* ==========================================================================
+       13. RESPONSIVE MEDIA QUERIES (DESKTOP ENHANCEMENTS)
+       ========================================================================== */
+    @media (min-width: 640px) {
+      .hero-stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .nav-links {
+        display: flex;
+      }
+      .mobile-menu-btn {
+        display: none;
+      }
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .catalog-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .calc-layout {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+      .order-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       BARRA DE NAVEGACIÓN
+       ========================================================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <!-- Logo Vectorial Nexus Studio -->
+      <a href="#inicio" class="brand-logo" aria-label="Nexus Studio Inicio">
+        <div class="logo-svg-wrap">
+          <svg viewBox="0 0 210 110" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="hexGradLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff0055" />
+                <stop offset="50%" stop-color="#ffcc00" />
+                <stop offset="100%" stop-color="#00ccff" />
+              </linearGradient>
+              <linearGradient id="hexGradRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00ffcc" />
+                <stop offset="50%" stop-color="#0066ff" />
+                <stop offset="100%" stop-color="#cc00ff" />
+              </linearGradient>
+            </defs>
+            <!-- Hexágono Izquierdo (N) -->
+            <polygon points="30,5 5,55 30,105 85,105 110,55 85,5" fill="none" stroke="url(#hexGradLeft)" stroke-width="7" stroke-linejoin="round" />
+            <!-- Hexágono Derecho (S) -->
+            <polygon points="125,5 100,55 125,105 180,105 205,55 180,5" fill="none" stroke="url(#hexGradRight)" stroke-width="7" stroke-linejoin="round" />
+            <!-- Letra N estilizada -->
+            <text x="42" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="54" fill="#6366f1">N</text>
+            <!-- Letra S estilizada -->
+            <text x="137" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="54" fill="#818cf8">S</text>
+          </svg>
+        </div>
+        <div class="brand-name">
+          <span class="brand-title">NEXUS STUDIO</span>
+          <span class="brand-tag">Impresión UV DTF • GT</span>
+        </div>
+      </a>
+
+      <!-- Enlaces de Escritorio -->
+      <ul class="nav-links">
+        <li><a href="#ventajas" class="nav-link">¿Qué es UV DTF?</a></li>
+        <li><a href="#cotizador" class="nav-link">Calculadora</a></li>
+        <li><a href="#catalogo" class="nav-link">Aplicaciones</a></li>
+        <li><a href="#pedido" class="nav-link">Hacer Pedido</a></li>
+        <li><a href="#tecnico" class="nav-link">Archivos</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+      </ul>
+
+      <!-- Acciones de Cabecera -->
+      <div class="nav-actions">
+        <!-- Switch Dark/Light Mode -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Cambiar Tema" title="Cambiar Tema">
+          <span id="themeIcon">☀️</span>
+        </button>
+
+        <!-- Botón Contacto WhatsApp Rápido -->
+        <a href="https://wa.me/50254066217?text=Hola%20Nexus%20Studio,%20quisiera%20informaci%C3%B3n%20sobre%20impresi%C3%B3n%20UV%20DTF" target="_blank" rel="noopener" class="btn btn-whatsapp" style="padding: 0.6rem 1.1rem; font-size: 0.88rem;">
+          <span>WhatsApp</span>
+        </a>
+
+        <!-- Botón Menú Móvil -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir Menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Desplegable Móvil -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <ul class="mobile-drawer-links">
+        <li><a href="#ventajas" class="nav-link mobile-nav-link">¿Qué es UV DTF?</a></li>
+        <li><a href="#cotizador" class="nav-link mobile-nav-link">Cotizador en Línea</a></li>
+        <li><a href="#catalogo" class="nav-link mobile-nav-link">Muestras y Catálogo</a></li>
+        <li><a href="#pedido" class="nav-link mobile-nav-link">Hacer Pedido</a></li>
+        <li><a href="#tecnico" class="nav-link mobile-nav-link">Guía Técnica</a></li>
+        <li><a href="#faq" class="nav-link mobile-nav-link">Preguntas Frecuentes</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <header class="hero" id="inicio">
+    <div class="hero-glow-bg"></div>
+    <div class="container hero-content">
+      <div class="badge" style="margin-bottom: 0.5rem;">
+        <span class="badge-dot"></span>
+        Tecnología Industrial Audley • Villa Nueva, Guatemala
+      </div>
+
+      <h1 class="hero-title">
+        Impresión <span class="text-gradient">UV DTF de Alta Precisión</span> para Marcas y Maquila B2B
+      </h1>
+
+      <p class="hero-description">
+        Transferencias directas con <strong>relieve táctil 3D</strong> y <strong>barniz brillante protector</strong>. Personaliza termos, vasos, acrílicos, madera y metales sin mínimos gigantescos. Desde 1 metro lineal con entrega en todo el país.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#cotizador" class="btn btn-primary">
+          <span>Calcular Cotización en Vivo</span>
+          <span>→</span>
+        </a>
+        <a href="#pedido" class="btn btn-secondary">
+          <span>Hacer un Pedido</span>
+        </a>
+        <a href="https://wa.me/50254066217?text=Hola%20Miguel,%20quiero%20cotizar%20maquila%20UV%20DTF%20con%20Nexus%20Studio" target="_blank" rel="noopener" class="btn btn-whatsapp">
+          <span>WhatsApp Directo (+502 5406 6217)</span>
+        </a>
+      </div>
+
+      <!-- Tarjetas de Estadísticas / Confianza -->
+      <div class="hero-stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">29 cm</div>
+          <div class="stat-label">Ancho útil de bobina (rollo 30cm)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">3D</div>
+          <div class="stat-label">Relieve táctil + Barniz UV total</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">Q75<small style="font-size: 0.9rem;">/m</small></div>
+          <div class="stat-label">Tarifa de mayoreo (20m en adelante)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">100%</div>
+          <div class="stat-label">Resistente a agua, calor y rayones</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       SECCIÓN: ¿QUÉ ES UV DTF Y VENTAJAS?
+       ========================================================================== -->
+  <section class="section-pad" id="ventajas">
+    <div class="container">
+      <div class="badge" style="margin-bottom: 0.5rem;">Ventajas Competitivas</div>
+      <h2 class="section-title">El estándar definitivo para artículos rígidos</h2>
+      <p class="section-subtitle">
+        El UV DTF combina tintas de curado ultravioleta, base blanca de alta densidad y barniz transparente para crear adhesivos que se sienten grabados de fábrica.
+      </p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-box">💎</div>
+          <h3>Relieve Táctil y Barniz</h3>
+          <p>Tus logos no se ven planos como una calcomanía tradicional; el barniz curado por lámparas UV agrega grosor, textura y brillo tipo cristal.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">🛡️</div>
+          <h3>Ultra Durabilidad y Agarre</h3>
+          <p>Adherencia industrial permanente sobre acero inoxidable, vidrio, cerámica, acrílico y plásticos duros. Resiste lavado continuo y fricción.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">✂️</div>
+          <h3>Cero Depilado y Sin Fondo</h3>
+          <p>Solo se transfiere la tinta impresa. No hay bordes transparentes molestos ni pérdida de tiempo pelando vinil con bisturí.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">⚡</div>
+          <h3>Sin Pantallas ni Matrices</h3>
+          <p>A diferencia de la serigrafía o tampografía, no requieres pagar moldes ni mínimos de miles de unidades. Imprime lo que realmente necesitas.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">🎨</div>
+          <h3>Full Color + Tinta Blanca</h3>
+          <p>Capacidad fotográfica con degradados perfectos. Gracias a la cama blanca, los colores resaltan vivos incluso sobre fondos negros o metálicos.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">🤝</div>
+          <h3>Ideal para Maquila B2B</h3>
+          <p>Precios especiales para imprentas, diseñadores, talleres de serigrafía y agencias de publicidad en rollos continuos laminados listos para aplicar.</p>
+        </div>
+      </div>
+
+      <!-- Tabla Comparativa Técnica -->
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th>Nexus Studio (UV DTF)</th>
+              <th>Serigrafía Tradicional</th>
+              <th>Vinil Autoadhesivo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Mínimos de Fabricación</strong></td>
+              <td><span class="badge-check">✓ Desde 1 metro lineal</span></td>
+              <td><span class="badge-cross">✗ 100 a 500 unidades mínimo</span></td>
+              <td><span class="badge-check">✓ Pocas unidades</span></td>
+            </tr>
+            <tr>
+              <td><strong>Acabado y Textura</strong></td>
+              <td><span class="badge-check">✓ Relieve 3D + Barniz brillante</span></td>
+              <td>Tinta plana convencional</td>
+              <td>Película plástica visible</td>
+            </tr>
+            <tr>
+              <td><strong>Detalles Finos y Degradados</strong></td>
+              <td><span class="badge-check">✓ Impresión a 1440 DPI</span></td>
+              <td><span class="badge-cross">✗ Difícil en tramas finas</span></td>
+              <td><span class="badge-cross">✗ Limitado a colores sólidos</span></td>
+            </tr>
+            <tr>
+              <td><strong>Aplicación</strong></td>
+              <td><span class="badge-check">✓ Manual al frío (despegar y presionar)</span></td>
+              <td>Requiere pulpo y secador</td>
+              <td>Requiere depilado y transfer</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECCIÓN: CALCULADORA Y COTIZADOR EN VIVO (ALGORITMO DE ACOMODO)
+       ========================================================================== -->
+  <section class="section-pad calculator-section" id="cotizador">
+    <div class="container">
+      <div class="badge" style="margin-bottom: 0.5rem;">Calculadora en Tiempo Real</div>
+      <h2 class="section-title">Cotiza tu rollo en Quetzales (Q)</h2>
+      <p class="section-subtitle">
+        Ingresa las dimensiones de tu sticker y la cantidad. Nuestro algoritmo optimiza el acomodo en la bobina de 29 cm útiles (con 2 mm de margen de corte).
+      </p>
+
+      <div class="calc-layout">
+        <!-- Panel de Entradas -->
+        <div class="calc-card">
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem;">1. Medidas de tu diseño</h3>
+
+          <div class="input-row">
+            <div class="form-group">
+              <label class="form-label" for="stickerWidth">
+                Ancho (cm)
+                <span class="tip">Máx. 29 cm</span>
+              </label>
+              <input type="number" id="stickerWidth" class="input-control" value="5" min="1" max="29" step="0.1">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="stickerHeight">
+                Alto (cm)
+                <span class="tip">Largo libre</span>
+              </label>
+              <input type="number" id="stickerHeight" class="input-control" value="5" min="1" max="200" step="0.1">
+            </div>
+          </div>
+
+          <!-- Presets Rápidos -->
+          <div class="form-group">
+            <span class="form-label" style="margin-bottom: 0.2rem;">Medidas comunes de referencia:</span>
+            <div class="quick-sizes">
+              <button class="btn-chip active" onclick="setPresetSize(5, 5, this)">5 × 5 cm (Vasos/Tazas)</button>
+              <button class="btn-chip" onclick="setPresetSize(8, 5, this)">8 × 5 cm (Termos Stanley/Yeti)</button>
+              <button class="btn-chip" onclick="setPresetSize(10, 10, this)">10 × 10 cm (Autos/Laptops)</button>
+              <button class="btn-chip" onclick="setPresetSize(4, 4, this)">4 × 4 cm (Promocionales pequeños)</button>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top: 1.5rem;">
+            <label class="form-label" for="stickerQty">
+              Cantidad de stickers
+              <span class="tip" id="qtyHelper">Ingresa tus unidades</span>
+            </label>
+            <input type="number" id="stickerQty" class="input-control" value="50" min="1" max="5000" step="1">
+          </div>
+
+          <!-- Simulador Visual de Bobina -->
+          <div class="simulator-container">
+            <div class="simulator-header">
+              <span>ANCHO DE BOBINA: 29 CM ÚTILES</span>
+              <span id="canvasStats">5 por fila</span>
+            </div>
+            <div class="roll-canvas-wrap">
+              <canvas id="rollCanvas" width="580" height="200"></canvas>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.5rem;">
+              * Vista esquemática del acomodo con separación automática de 2 mm para corte cómodo.
+            </p>
+          </div>
+        </div>
+
+        <!-- Panel de Resultados y Precios -->
+        <div class="calc-card calc-results-panel">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem;">2. Desglose del Material</h3>
+
+            <div class="results-breakdown">
+              <div class="breakdown-row">
+                <span>Stickers por fila:</span>
+                <strong id="resStickersPerRow">5 piezas</strong>
+              </div>
+              <div class="breakdown-row">
+                <span>Filas requeridas:</span>
+                <strong id="resRows">10 filas</strong>
+              </div>
+              <div class="breakdown-row">
+                <span>Largo físico que ocupan:</span>
+                <strong id="resPhysicalLength">51.8 cm</strong>
+              </div>
+              <div class="breakdown-row">
+                <span>Metros lineales a cobrar:</span>
+                <strong id="resBillableMeters">1.00 m (Mínimo)</strong>
+              </div>
+              <div class="breakdown-row">
+                <span>Tarifa aplicada por metro:</span>
+                <strong id="resTierRate">Q140.00 / m</strong>
+              </div>
+            </div>
+
+            <!-- Aviso de mínimo de compra o espacio extra aprovechable -->
+            <div id="minimumNotice" class="minimum-notice">
+              💡 <strong>Aprovecha tu metro:</strong> El pedido mínimo es 1 metro lineal (Q140.00). Tus 50 stickers ocupan aprox. 0.52 m. ¡Puedes pedir hasta <strong id="maxInOneMeter">95 piezas</strong> por el mismo precio exacto de Q140.00!
+            </div>
+
+            <!-- Caja de Total en Quetzales -->
+            <div class="total-box">
+              <div class="total-label">Total Estimado de Inversión</div>
+              <div class="total-price" id="resTotalPrice">Q140.00</div>
+              <div class="unit-price-hint" id="resUnitHint">Costo estimado: Q2.80 por sticker</div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <button class="btn btn-primary" onclick="transferQuoteToOrder()">
+              <span>Transferir a Formulario de Pedido</span>
+              <span>↓</span>
+            </button>
+            <button class="btn btn-whatsapp" onclick="sendQuoteViaWhatsApp()">
+              <span>Consultar esta Cotización por WhatsApp</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECCIÓN: CATÁLOGO DE APLICACIONES
+       ========================================================================== -->
+  <section class="section-pad" id="catalogo">
+    <div class="container">
+      <div class="badge" style="margin-bottom: 0.5rem;">Galería de Inspiración</div>
+      <h2 class="section-title">¿Dónde puedes aplicar UV DTF?</h2>
+      <p class="section-subtitle">
+        Cualquier superficie plana, curva o ligeramente texturizada que no sea tela flexible es un candidato ideal.
+      </p>
+
+      <div class="catalog-grid">
+        <div class="catalog-card">
+          <div class="catalog-img-placeholder">
+            <span style="font-size: 3rem;">🥤</span>
+            <span class="catalog-badge">Favorito B2B</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Vasos y Pachones Térmicos</h3>
+            <p>Resiste el lavado diario en termos tipo Stanley, Yeti o pachones de gimnasio sin perder el barniz brillante ni el relieve.</p>
+            <span class="catalog-tag">Sugerido: 8 × 5 cm o 6 × 6 cm</span>
+          </div>
+        </div>
+
+        <div class="catalog-card">
+          <div class="catalog-img-placeholder">
+            <span style="font-size: 3rem;">☕</span>
+            <span class="catalog-badge">Cafeterías</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Tazas, Vasos de Vidrio y Growlers</h3>
+            <p>Personaliza lotes cortos para cafeterías de especialidad o cervecerías artesanales sin mandar a fabricar 5,000 unidades.</p>
+            <span class="catalog-tag">Sugerido: 5 × 5 cm</span>
+          </div>
+        </div>
+
+        <div class="catalog-card">
+          <div class="catalog-img-placeholder">
+            <span style="font-size: 3rem;">📱</span>
+            <span class="catalog-badge">Accesorios</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Fundas de Celular y Laptops</h3>
+            <p>Se adhiere fuertemente sobre carcasas de policarbonato duro, tablets y tapas metálicas de computadoras portátiles.</p>
+            <span class="catalog-tag">Sugerido: 6 × 4 cm</span>
+          </div>
+        </div>
+
+        <div class="catalog-card">
+          <div class="catalog-img-placeholder">
+            <span style="font-size: 3rem;">🪧</span>
+            <span class="catalog-badge">Señalética</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Rótulos y Placas en Acrílico</h3>
+            <p>Ideal para placas conmemorativas, identificadores de oficina y trofeos donde el barniz transparente emula acabados de lujo.</p>
+            <span class="catalog-tag">Sugerido: Medidas a medida</span>
+          </div>
+        </div>
+
+        <div class="catalog-card">
+          <div class="catalog-img-placeholder">
+            <span style="font-size: 3rem;">🪵</span>
+            <span class="catalog-badge">Artesanal</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Madera Laqueada y Cajas Premium</h3>
+            <p>Agrega la marca de tu negocio a cajas de madera para vinos, empaques rígidos o tablas de servir de alta gama.</p>
+            <span class="catalog-tag">Sugerido: 7 × 7 cm</span>
+          </div>
+        </div>
+
+        <div class="catalog-card">
+          <div class="catalog-img-placeholder">
+            <span style="font-size: 3rem;">🎁</span>
+            <span class="catalog-badge">Promocionales</span>
+          </div>
+          <div class="catalog-body">
+            <h3>Artículos de Mercadotecnia y Regalos</h3>
+            <p>Bolígrafos metálicos, memorias USB, libretas de pasta dura y estuches donde el vinil tradicional no tiene suficiente agarre.</p>
+            <span class="catalog-tag">Sugerido: 4 × 2 cm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECCIÓN: FORMULARIO DE PEDIDOS Y SUBIDA DE DISEÑO
+       ========================================================================== -->
+  <section class="section-pad" id="pedido" style="background: var(--bg-surface-elevated);">
+    <div class="container">
+      <div class="badge" style="margin-bottom: 0.5rem;">Área de Pedidos</div>
+      <h2 class="section-title">Envíanos tu diseño y realiza tu pedido</h2>
+      <p class="section-subtitle">
+        Sube tu archivo (.PNG o .TIFF a 300 DPI) con fondo transparente o especifícanos qué área requiere transparencia.
+      </p>
+
+      <form id="orderForm" onsubmit="handleOrderSubmit(event)">
+        <div class="order-grid">
+          <!-- Datos del Cliente y Especificaciones -->
+          <div class="calc-card">
+            <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.25rem;">1. Datos de Contacto y Envío</h3>
+
+            <div class="form-group">
+              <label class="form-label" for="clientName">Nombre Completo o Empresa *</label>
+              <input type="text" id="clientName" class="input-control" placeholder="Ej. Juan Pérez / Imprenta Maya" required>
+            </div>
+
+            <div class="input-row">
+              <div class="form-group">
+                <label class="form-label" for="clientPhone">WhatsApp / Teléfono *</label>
+                <input type="tel" id="clientPhone" class="input-control" placeholder="Ej. 5555 1234" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="clientEmail">Correo Electrónico (Opcional)</label>
+                <input type="email" id="clientEmail" class="input-control" placeholder="cliente@correo.com">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="clientAddress">Municipio o Zona de Entrega *</label>
+              <input type="text" id="clientAddress" class="input-control" placeholder="Ej. Villa Nueva, Zona 10, Mixco o Envío a Departamento" required>
+            </div>
+
+            <h3 style="font-size: 1.2rem; font-weight: 700; margin: 1.5rem 0 1.25rem;">2. Medidas y Cantidad</h3>
+
+            <div class="input-row">
+              <div class="form-group">
+                <label class="form-label" for="orderWidth">Ancho (cm) *</label>
+                <input type="number" id="orderWidth" class="input-control" value="5" min="1" max="29" step="0.1" required oninput="syncOrderWithCalc()">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="orderHeight">Alto (cm) *</label>
+                <input type="number" id="orderHeight" class="input-control" value="5" min="1" max="200" step="0.1" required oninput="syncOrderWithCalc()">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="orderQty">Cantidad de stickers *</label>
+              <input type="number" id="orderQty" class="input-control" value="50" min="1" max="5000" required oninput="syncOrderWithCalc()">
+            </div>
+          </div>
+
+          <!-- Subida de Archivo y Notas -->
+          <div class="calc-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.25rem;">3. Archivo de Diseño</h3>
+
+              <!-- Drag and drop zone -->
+              <div class="file-upload-area" id="dropZone">
+                <input type="file" id="fileInput" class="file-input-hidden" accept=".png, .tiff, .tif" onchange="handleFileSelected(this.files)">
+                <div class="file-upload-icon">📁</div>
+                <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">Arrastra tu archivo aquí o haz clic para subir</h4>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">
+                  Solo aceptamos formatos <strong>.PNG</strong> o <strong>.TIFF</strong> (Mínimo 300 DPI, máx. 25 MB)
+                </p>
+              </div>
+
+              <!-- Vista previa de archivo cargado -->
+              <div class="preview-box" id="filePreviewBox">
+                <img id="previewImg" class="preview-thumb" src="" alt="Vista previa">
+                <div class="preview-info">
+                  <div class="preview-filename" id="previewFileName">archivo.png</div>
+                  <div class="preview-filesize" id="previewFileSize">1.2 MB</div>
+                </div>
+                <button type="button" class="remove-file-btn" onclick="removeSelectedFile()" title="Eliminar archivo">✕</button>
+              </div>
+
+              <div class="form-group" style="margin-top: 1.5rem;">
+                <label class="form-label" for="transparencyNotes">
+                  Indicaciones sobre Transparencia
+                  <span class="tip">¿Qué parte debe ser transparente?</span>
+                </label>
+                <textarea id="transparencyNotes" class="input-control" rows="3" placeholder="Ej. Mi archivo PNG ya viene sin fondo, solo imprimir el logo central. / Quiero que el fondo blanco se vuelva transparente."></textarea>
+              </div>
+            </div>
+
+            <!-- Resumen de Costo del Pedido -->
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+                <span style="font-weight: 600; color: var(--text-secondary);">Estimado del Pedido:</span>
+                <span style="font-size: 1.8rem; font-weight: 800; font-family: var(--font-mono); color: var(--text-primary);" id="orderTotalDisplay">Q140.00</span>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <button type="submit" class="btn btn-primary" id="btnSubmitOrder">
+                  <span>Confirmar y Enviar Pedido</span>
+                  <span>🚀</span>
+                </button>
+                <button type="button" class="btn btn-whatsapp" onclick="sendOrderDirectToWhatsApp()">
+                  <span>Enviar Directo por WhatsApp</span>
+                  <span>📱</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECCIÓN: GUÍA TÉCNICA DE PREPARACIÓN DE ARCHIVOS
+       ========================================================================== -->
+  <section class="section-pad" id="tecnico">
+    <div class="container">
+      <div class="badge" style="margin-bottom: 0.5rem;">Diseñadores e Imprentas</div>
+      <h2 class="section-title">Requisitos Técnicos de Impresión</h2>
+      <p class="section-subtitle">
+        Para garantizar que la lámpara UV y los cabezales Audley reproduzcan tu arte con nitidez impecable, revisa este checklist rápido:
+      </p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-box">📐</div>
+          <h3>Resolución Mínima 300 DPI</h3>
+          <p>Exporta tu archivo a tamaño real (escala 1:1) con resolución mínima de 300 puntos por pulgada. Archivos de menor resolución pixelarán los bordes.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">🖼️</div>
+          <h3>Formatos .PNG y .TIFF</h3>
+          <p>Aceptamos exclusivamente archivos .PNG con canal alfa transparente o .TIFF sin compresión. Evita capturas de pantalla o imágenes de redes sociales.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">🎨</div>
+          <h3>Modo de Color CMYK</h3>
+          <p>Prepara tus artes en espacio de color CMYK para evitar variaciones imprevistas de tono al pasar de la pantalla a las tintas físicas UV.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">🔍</div>
+          <h3>Grosor Mínimo de Línea</h3>
+          <p>Los trazos aislados o textos deben tener un grosor mínimo de 0.5 mm para asegurar suficiente base adhesiva y anclaje al producto final.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">✨</div>
+          <h3>Capa de Barniz y Blanco</h3>
+          <p>Si tu diseño no tiene canal spot pre-separado, nuestro RIP generará automáticamente la base blanca sólida y el barniz de cobertura total.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">📏</div>
+          <h3>Ancho Útil de Impresión</h3>
+          <p>La bobina mide 30 cm con 5 mm de margen técnico a cada lado. El área neta imprimible es de <strong>29 cm de ancho</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECCIÓN: PREGUNTAS FRECUENTES (FAQ)
+       ========================================================================== -->
+  <section class="section-pad" id="faq" style="background: var(--bg-surface-elevated);">
+    <div class="container">
+      <div class="badge" style="margin-bottom: 0.5rem; text-align: center; margin-left: auto; margin-right: auto;">Dudas Comunes</div>
+      <h2 class="section-title" style="text-align: center;">Preguntas Frecuentes</h2>
+      <p class="section-subtitle" style="text-align: center; margin-left: auto; margin-right: auto;">
+        Todo lo que necesitas saber sobre entregas, aplicación y pedidos en Guatemala.
+      </p>
+
+      <div class="faq-list">
+        <div class="faq-item active">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>¿Cómo se aplica el sticker UV DTF sobre los objetos?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Es un proceso 100% en frío que toma 30 segundos:
+            <ol style="margin-left: 1.25rem; margin-top: 0.5rem;">
+              <li>Limpia la superficie con alcohol isopropílico para retirar polvo y grasa.</li>
+              <li>Desprende la película protectora trasera.</li>
+              <li>Posiciona el sticker sobre el objeto y presiona firmemente con el pulgar o una espátula plástica.</li>
+              <li>Retira suavemente el film transportador superior en un ángulo de 180°. La tinta con relieve y barniz queda fijada permanentemente.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>¿Cuál es el tiempo de entrega y hacen envíos a departamentos?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Nuestros tiempos estándar de producción son de <strong>24 a 48 horas hábiles</strong> tras confirmar el arte y el pago. Hacemos entregas locales en el Área Metropolitana (Villa Nueva, San Cristóbal, Ciudad de Guatemala) y envíos a cualquier departamento del país por medio de Guatex o Cargo Expreso con cobro de flete en destino.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>¿Por qué el mínimo de compra es 1 metro lineal?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Nuestra impresora Audley es de escala industrial y opera con bobina de rollo continuo. Encender la maquinaria, purgar cabezales y alinear la película para tirajes menores a 1 metro genera desperdicio técnico. Al pedir 1 metro completo (Q140.00), aprovechas para meter decenas de stickers al menor costo unitario.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>¿Cómo funciona la escala de precios por volumen?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Trabajamos con tarifas escalonadas y agresivas de maquila:<br>
+            • <strong>1 metro:</strong> Q140.00 fijo.<br>
+            • <strong>2 a 2.9 metros:</strong> Q110.00 por metro.<br>
+            • <strong>3 a 9.9 metros:</strong> Q100.00 por metro.<br>
+            • <strong>10 a 19.9 metros:</strong> Q90.00 por metro.<br>
+            • <strong>20 metros o más:</strong> Q75.00 por metro (Precio piso especial para talleres e imprentas).
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>¿Qué métodos de pago aceptan?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Aceptamos transferencias bancarias directas y depósitos monetarios en Banco Industrial (BI), BAC Credomatic, Banrural y G&T Continental. Para iniciar producción solicitamos el 100% de anticipo del trabajo cotizado.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       MODAL DE CONFIRMACIÓN DE PEDIDO
+       ========================================================================== -->
+  <div class="modal-backdrop" id="orderModal">
+    <div class="modal-card">
+      <div class="modal-icon">✓</div>
+      <h3 class="modal-title">¡Pedido Registrado con Éxito!</h3>
+      <p class="modal-text" id="modalOrderSummary">
+        Tu pedido ha sido recibido correctamente. Nos pondremos en contacto contigo a la brevedad para verificar tu archivo e iniciar producción.
+      </p>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <button class="btn btn-whatsapp" onclick="continueToWhatsAppModal()">
+          <span>Enviar Resumen a WhatsApp de Nexus Studio</span>
+        </button>
+        <button class="btn btn-secondary" onclick="closeOrderModal()">
+          <span>Cerrar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-logo" style="margin-bottom: 0.5rem;">
+            <div class="logo-svg-wrap" style="width: 38px; height: 38px;">
+              <svg viewBox="0 0 210 110" width="100%" height="100%">
+                <polygon points="30,5 5,55 30,105 85,105 110,55 85,5" fill="none" stroke="#6366f1" stroke-width="8" />
+                <polygon points="125,5 100,55 125,105 180,105 205,55 180,5" fill="none" stroke="#818cf8" stroke-width="8" />
+                <text x="42" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="54" fill="#6366f1">N</text>
+                <text x="137" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="54" fill="#818cf8">S</text>
+              </svg>
+            </div>
+            <div class="brand-name">
+              <span class="brand-title" style="font-size: 1.1rem;">NEXUS STUDIO</span>
+            </div>
+          </div>
+          <p>
+            Taller especializado en impresión UV DTF industrial en Villa Nueva, Guatemala. Maquila directa y acabados de relieve 3D para marcas comerciales.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#ventajas">Ventajas UV DTF</a></li>
+            <li><a href="#cotizador">Calculadora de Rollo</a></li>
+            <li><a href="#pedido">Hacer Pedido</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Especificaciones</h4>
+          <ul>
+            <li><a href="#tecnico">Requisitos Técnicos</a></li>
+            <li><a href="#catalogo">Catálogo de Usos</a></li>
+            <li><a href="#faq">Preguntas Frecuentes</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Contacto Directo</h4>
+          <ul>
+            <li><span style="color: var(--text-secondary);">Tel / WhatsApp:</span> <strong>+502 5406 6217</strong></li>
+            <li><span style="color: var(--text-secondary);">Ubicación:</span> Villa Nueva, Guatemala</li>
+            <li><span style="color: var(--text-secondary);">Horario:</span> Lunes a Sábado: 8:00 - 18:00</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Nexus Studio. Todos los derechos reservados. Villa Nueva, Guatemala.</div>
+        <div>Desarrollado en Vanilla HTML5, CSS3 y JavaScript.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT VANILLA (LÓGICA DE NEGOCIO, MATEMÁTICAS Y EVENTOS)
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       1. ESTADO GLOBAL Y REGLAS DE NEGOCIO DE NEXUS STUDIO
+       ========================================================================== */
+    const BUSINESS_CONFIG = {
+      phoneWhatsApp: "50254066217",
+      printableWidthCm: 29.0, // 30cm roll minus 0.5cm mandatory margin on each side
+      marginBetweenCm: 0.2,   // 2mm separation between stickers
+      minimumBillableMeters: 1.0,
+      
+      // Escala de Tarifas Oficial de Nexus Studio (en Quetzales Q)
+      tiers: [
+        { maxMeters: 1.0, rate: 140.0, isFlatMin: true },
+        { maxMeters: 3.0, rate: 110.0 }, // 1m a < 3m
+        { maxMeters: 10.0, rate: 100.0 }, // 3m a < 10m
+        { maxMeters: 20.0, rate: 90.0 },  // 10m a < 20m
+        { maxMeters: Infinity, rate: 75.0 } // 20m en adelante
+      ],
+      
+      // Configuración de Supabase (Opcional - Funciona sin configuración por LocalStorage + WhatsApp)
+      supabaseUrl: "", // Pega aquí tu Project URL de Supabase
+      supabaseAnonKey: "" // Pega aquí tu anon-public key de Supabase
+    };
+
+    // Estado actual de la cotización
+    let currentQuote = {
+      widthCm: 5.0,
+      heightCm: 5.0,
+      qty: 50,
+      stickersPerRow: 5,
+      rows: 10,
+      physicalLengthCm: 51.8,
+      billableMeters: 1.0,
+      tierRate: 140.0,
+      totalPriceQ: 140.0,
+      unitPriceQ: 2.80,
+      maxInOneMeter: 95,
+      isUnderMin: true
+    };
+
+    let selectedFile = null;
+    let lastRegisteredOrder = null;
+
+    /* ==========================================================================
+       2. INICIALIZACIÓN AL CARGAR LA PÁGINA
+       ========================================================================== */
+    document.addEventListener("DOMContentLoaded", () => {
+      initTheme();
+      initCalculatorListeners();
+      initDragAndDrop();
+      calculateQuote();
+    });
+
+    /* ==========================================================================
+       3. TEMA OSCURO / CLARO (DARK / LIGHT MODE)
+       ========================================================================== */
+    function initTheme() {
+      const savedTheme = localStorage.getItem("nexus_theme") || "dark";
+      setTheme(savedTheme);
+
+      const toggleBtn = document.getElementById("themeToggleBtn");
+      toggleBtn.addEventListener("click", () => {
+        const currentTheme = document.documentElement.getAttribute("data-theme");
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        setTheme(newTheme);
+      });
+    }
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("nexus_theme", theme);
+      const icon = document.getElementById("themeIcon");
+      if (icon) {
+        icon.textContent = theme === "dark" ? "☀️" : "🌙";
+      }
+      // Redibujar el canvas de la bobina para que coincida con el tema
+      drawRollCanvas();
+    }
+
+    /* Menú Móvil */
+    const mobileBtn = document.getElementById("mobileMenuBtn");
+    const mobileDrawer = document.getElementById("mobileDrawer");
+    if (mobileBtn && mobileDrawer) {
+      mobileBtn.addEventListener("click", () => {
+        mobileDrawer.classList.toggle("open");
+      });
+
+      document.querySelectorAll(".mobile-nav-link").forEach(link => {
+        link.addEventListener("click", () => {
+          mobileDrawer.classList.remove("open");
+        });
+      });
+    }
+
+    /* ==========================================================================
+       4. LÓGICA MATEMÁTICA DEL COTIZADOR Y ACOMODO DE BOBINA
+       ========================================================================== */
+    function initCalculatorListeners() {
+      const widthInput = document.getElementById("stickerWidth");
+      const heightInput = document.getElementById("stickerHeight");
+      const qtyInput = document.getElementById("stickerQty");
+
+      [widthInput, heightInput, qtyInput].forEach(input => {
+        input.addEventListener("input", () => {
+          calculateQuote();
+        });
+      });
+    }
+
+    function setPresetSize(w, h, btnElement) {
+      document.getElementById("stickerWidth").value = w;
+      document.getElementById("stickerHeight").value = h;
+      
+      document.querySelectorAll(".quick-sizes .btn-chip").forEach(chip => {
+        chip.classList.remove("active");
+      });
+      if (btnElement) btnElement.classList.add("active");
+
+      calculateQuote();
+    }
+
+    function calculateQuote() {
+      let w = parseFloat(document.getElementById("stickerWidth").value) || 1;
+      let h = parseFloat(document.getElementById("stickerHeight").value) || 1;
+      let qty = parseInt(document.getElementById("stickerQty").value) || 1;
+
+      // Validación de ancho máximo de bobina (29 cm)
+      if (w > BUSINESS_CONFIG.printableWidthCm) {
+        w = BUSINESS_CONFIG.printableWidthCm;
+        document.getElementById("stickerWidth").value = w;
+      }
+      if (w < 0.5) w = 0.5;
+      if (h < 0.5) h = 0.5;
+      if (qty < 1) qty = 1;
+
+      currentQuote.widthCm = w;
+      currentQuote.heightCm = h;
+      currentQuote.qty = qty;
+
+      const rollWidth = BUSINESS_CONFIG.printableWidthCm;
+      const gap = BUSINESS_CONFIG.marginBetweenCm;
+
+      // Cantidad de stickers por fila (ancho útil 29 cm con gap de 2mm)
+      const stickersPerRow = Math.max(1, Math.floor((rollWidth + gap) / (w + gap)));
+      const rows = Math.ceil(qty / stickersPerRow);
+      
+      // Largo total en centímetros
+      const physicalLengthCm = Math.max(0, (rows * (h + gap)) - gap);
+      const actualLinearMeters = physicalLengthCm / 100.0;
+
+      // Cálculo de cuántos caben en 1 metro exacto de ese tamaño
+      const rowsInOneMeter = Math.max(1, Math.floor((100.0 + gap) / (h + gap)));
+      const maxInOneMeter = rowsInOneMeter * stickersPerRow;
+
+      // Cálculo de Tarifa Escalonada según los metros utilizados
+      let billableMeters = actualLinearMeters;
+      let tierRate = 140.0;
+      let totalPrice = 0.0;
+      let isUnderMin = false;
+
+      if (actualLinearMeters <= 1.0) {
+        billableMeters = 1.0;
+        tierRate = 140.0;
+        totalPrice = 140.0;
+        isUnderMin = actualLinearMeters < 1.0;
+      } else if (actualLinearMeters < 3.0) {
+        // Rango de 1 a 3 metros (Tarifa de Q110/m)
+        tierRate = 110.0;
+        totalPrice = actualLinearMeters * tierRate;
+      } else if (actualLinearMeters < 10.0) {
+        // Rango de 3 a 10 metros (Tarifa de Q100/m)
+        tierRate = 100.0;
+        totalPrice = actualLinearMeters * tierRate;
+      } else if (actualLinearMeters < 20.0) {
+        // Rango de 10 a 20 metros (Tarifa de Q90/m)
+        tierRate = 90.0;
+        totalPrice = actualLinearMeters * tierRate;
+      } else {
+        // Mayoreo 20+ metros (Tarifa piso de Q75/m)
+        tierRate = 75.0;
+        totalPrice = actualLinearMeters * tierRate;
+      }
+
+      // Asegurar que nunca cueste menos que el mínimo de Q140
+      if (totalPrice < 140.0) totalPrice = 140.0;
+
+      const unitPrice = totalPrice / qty;
+
+      // Guardar en estado
+      currentQuote.stickersPerRow = stickersPerRow;
+      currentQuote.rows = rows;
+      currentQuote.physicalLengthCm = physicalLengthCm;
+      currentQuote.billableMeters = billableMeters;
+      currentQuote.tierRate = tierRate;
+      currentQuote.totalPriceQ = totalPrice;
+      currentQuote.unitPriceQ = unitPrice;
+      currentQuote.maxInOneMeter = maxInOneMeter;
+      currentQuote.isUnderMin = isUnderMin;
+
+      // Actualizar DOM del Cotizador
+      document.getElementById("resStickersPerRow").textContent = `${stickersPerRow} pzas / fila`;
+      document.getElementById("resRows").textContent = `${rows} filas`;
+      document.getElementById("resPhysicalLength").textContent = `${physicalLengthCm.toFixed(1)} cm`;
+      document.getElementById("resBillableMeters").textContent = `${billableMeters.toFixed(2)} m ${isUnderMin ? '(Mínimo 1m)' : ''}`;
+      document.getElementById("resTierRate").textContent = `Q${tierRate.toFixed(2)} / m`;
+      document.getElementById("resTotalPrice").textContent = `Q${totalPrice.toFixed(2)}`;
+      document.getElementById("resUnitHint").textContent = `Costo aprox: Q${unitPrice.toFixed(2)} por sticker`;
+      document.getElementById("canvasStats").textContent = `${stickersPerRow} por fila (${(stickersPerRow * w).toFixed(1)} cm)`;
+
+      // Manejar aviso de mínimo
+      const noticeBox = document.getElementById("minimumNotice");
+      if (isUnderMin) {
+        noticeBox.style.display = "block";
+        noticeBox.innerHTML = `💡 <strong>Aprovecha tu metro:</strong> El pedido mínimo es 1 metro lineal (Q140.00). Tus ${qty} stickers ocupan aprox. ${(actualLinearMeters).toFixed(2)} m. ¡Puedes pedir hasta <strong>${maxInOneMeter} piezas</strong> por el mismo precio exacto de Q140.00!`;
+      } else {
+        noticeBox.style.display = "none";
+      }
+
+      // Sincronizar con el panel de pedidos si no se ha modificado manualmente
+      document.getElementById("orderTotalDisplay").textContent = `Q${totalPrice.toFixed(2)}`;
+
+      // Dibujar simulación gráfica
+      drawRollCanvas();
+    }
+
+    /* Dibujar en Canvas la bobina con los stickers reales */
+    function drawRollCanvas() {
+      const canvas = document.getElementById("rollCanvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+
+      // Ajuste de DPI de pantalla
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = 200 * dpr;
+      ctx.scale(dpr, dpr);
+
+      const width = rect.width;
+      const height = 200;
+
+      // Limpiar canvas
+      ctx.clearRect(0, 0, width, height);
+
+      // Fondo bobina
+      const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+      ctx.fillStyle = isDark ? "#091322" : "#e2e8f0";
+      ctx.fillRect(0, 0, width, height);
+
+      // Escala: 29 cm útiles en el ancho del canvas con margen visual de 15px
+      const paddingX = 20;
+      const availableWidthPx = width - (paddingX * 2);
+      const scale = availableWidthPx / BUSINESS_CONFIG.printableWidthCm; // px por cm
+
+      const stickerWidthPx = currentQuote.widthCm * scale;
+      const stickerHeightPx = currentQuote.heightCm * scale;
+      const gapPx = BUSINESS_CONFIG.marginBetweenCm * scale;
+
+      // Borde de área útil (29 cm)
+      ctx.strokeStyle = isDark ? "rgba(129, 140, 248, 0.2)" : "rgba(18, 34, 64, 0.15)";
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]);
+      ctx.strokeRect(paddingX, 10, availableWidthPx, height - 20);
+      ctx.setLineDash([]);
+
+      // Dibujar stickers
+      const itemsPerRow = currentQuote.stickersPerRow;
+      let drawnCount = 0;
+      const maxDrawRows = Math.ceil(height / (stickerHeightPx + gapPx)) + 1;
+
+      ctx.fillStyle = isDark ? "rgba(129, 140, 248, 0.45)" : "rgba(99, 102, 241, 0.35)";
+      ctx.strokeStyle = isDark ? "#818cf8" : "#4f46e5";
+      ctx.lineWidth = 1.5;
+
+      for (let r = 0; r < currentQuote.rows && r < maxDrawRows; r++) {
+        for (let c = 0; c < itemsPerRow; c++) {
+          if (drawnCount >= currentQuote.qty) break;
+
+          const x = paddingX + (c * (stickerWidthPx + gapPx));
+          const y = 15 + (r * (stickerHeightPx + gapPx));
+
+          // Rectángulo de sticker redondeado
+          roundRect(ctx, x, y, stickerWidthPx, stickerHeightPx, 4, true, true);
+
+          // Brillo sutil simulando barniz UV
+          ctx.fillStyle = "rgba(255, 255, 255, 0.15)";
+          ctx.fillRect(x + 2, y + 2, stickerWidthPx * 0.4, 3);
+          ctx.fillStyle = isDark ? "rgba(129, 140, 248, 0.45)" : "rgba(99, 102, 241, 0.35)";
+
+          drawnCount++;
+        }
+      }
+
+      // Regla métrica inferior
+      ctx.fillStyle = isDark ? "#64748b" : "#475569";
+      ctx.font = "10px monospace";
+      ctx.fillText("0 cm", paddingX, height - 4);
+      ctx.fillText("29 cm útiles", width - paddingX - 65, height - 4);
+    }
+
+    function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+      if (width < 2 * radius) radius = width / 2;
+      if (height < 2 * radius) radius = height / 2;
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.arcTo(x + width, y, x + width, y + height, radius);
+      ctx.arcTo(x + width, y + height, x, y + height, radius);
+      ctx.arcTo(x, y + height, x, y, radius);
+      ctx.arcTo(x, y, x + width, y, radius);
+      ctx.closePath();
+      if (fill) ctx.fill();
+      if (stroke) ctx.stroke();
+    }
+
+    window.addEventListener("resize", () => {
+      drawRollCanvas();
+    });
+
+    /* ==========================================================================
+       5. TRANSFERENCIA Y SINCRONIZACIÓN CON EL FORMULARIO DE PEDIDOS
+       ========================================================================== */
+    function transferQuoteToOrder() {
+      document.getElementById("orderWidth").value = currentQuote.widthCm;
+      document.getElementById("orderHeight").value = currentQuote.heightCm;
+      document.getElementById("orderQty").value = currentQuote.qty;
+      document.getElementById("orderTotalDisplay").textContent = `Q${currentQuote.totalPriceQ.toFixed(2)}`;
+
+      const orderSection = document.getElementById("pedido");
+      if (orderSection) {
+        orderSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    function syncOrderWithCalc() {
+      const w = parseFloat(document.getElementById("orderWidth").value) || 5;
+      const h = parseFloat(document.getElementById("orderHeight").value) || 5;
+      const qty = parseInt(document.getElementById("orderQty").value) || 50;
+
+      document.getElementById("stickerWidth").value = w;
+      document.getElementById("stickerHeight").value = h;
+      document.getElementById("stickerQty").value = qty;
+
+      calculateQuote();
+      document.getElementById("orderTotalDisplay").textContent = `Q${currentQuote.totalPriceQ.toFixed(2)}`;
+    }
+
+    /* ==========================================================================
+       6. GESTIÓN DE ARCHIVOS (.PNG Y .TIFF EXCLUSIVOS)
+       ========================================================================== */
+    function initDragAndDrop() {
+      const dropZone = document.getElementById("dropZone");
+      if (!dropZone) return;
+
+      ["dragenter", "dragover"].forEach(event => {
+        dropZone.addEventListener(event, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropZone.classList.add("dragover");
+        });
+      });
+
+      ["dragleave", "drop"].forEach(event => {
+        dropZone.addEventListener(event, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropZone.classList.remove("dragover");
+        });
+      });
+
+      dropZone.addEventListener("drop", (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        handleFileSelected(files);
+      });
+    }
+
+    function handleFileSelected(files) {
+      if (!files || files.length === 0) return;
+      const file = files[0];
+
+      // Validación de extensión: Solo .PNG o .TIFF
+      const fileName = file.name.toLowerCase();
+      const isValidExt = fileName.endsWith(".png") || fileName.endsWith(".tiff") || fileName.endsWith(".tif");
+
+      if (!isValidExt) {
+        alert("⚠️ Formato no permitido. Para impresión UV DTF aceptamos únicamente archivos en formato .PNG o .TIFF con fondo transparente.");
+        return;
+      }
+
+      // Validación de peso máximo (25 MB)
+      const maxMb = 25;
+      if (file.size > maxMb * 1024 * 1024) {
+        alert(`⚠️ El archivo pesa más de ${maxMb}MB. Por favor exporta a 300 DPI con compresión adecuada.`);
+        return;
+      }
+
+      selectedFile = file;
+
+      // Mostrar vista previa
+      const previewBox = document.getElementById("filePreviewBox");
+      const previewFileName = document.getElementById("previewFileName");
+      const previewFileSize = document.getElementById("previewFileSize");
+      const previewImg = document.getElementById("previewImg");
+
+      previewFileName.textContent = file.name;
+      previewFileSize.textContent = formatBytes(file.size);
+
+      if (fileName.endsWith(".png")) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          previewImg.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        // En caso de TIFF el navegador no siempre genera thumbnail directo
+        previewImg.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23818cf8'><text x='2' y='18' font-size='14' font-weight='bold'>TIFF</text></svg>";
+      }
+
+      previewBox.style.display = "flex";
+    }
+
+    function removeSelectedFile() {
+      selectedFile = null;
+      document.getElementById("fileInput").value = "";
+      document.getElementById("filePreviewBox").style.display = "none";
+    }
+
+    function formatBytes(bytes) {
+      if (bytes === 0) return "0 Bytes";
+      const k = 1024;
+      const sizes = ["Bytes", "KB", "MB", "GB"];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+    }
+
+    /* ==========================================================================
+       7. ENVÍO DE PEDIDO (SUPABASE REST O FALLBACK DE RESERVA)
+       ========================================================================== */
+    async function handleOrderSubmit(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("clientName").value.trim();
+      const phone = document.getElementById("clientPhone").value.trim();
+      const email = document.getElementById("clientEmail").value.trim();
+      const address = document.getElementById("clientAddress").value.trim();
+      const notes = document.getElementById("transparencyNotes").value.trim();
+      const width = currentQuote.widthCm;
+      const height = currentQuote.heightCm;
+      const qty = currentQuote.qty;
+      const totalQ = currentQuote.totalPriceQ;
+      const meters = currentQuote.billableMeters;
+
+      if (!selectedFile) {
+        const confirmWithoutFile = confirm("No has adjuntado tu archivo de diseño (.PNG o .TIFF). ¿Deseas registrar el pedido y enviarnos el archivo después por WhatsApp o correo?");
+        if (!confirmWithoutFile) return;
+      }
+
+      const submitBtn = document.getElementById("btnSubmitOrder");
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = "<span>Procesando pedido...</span>";
+
+      const orderData = {
+        orderId: "NX-" + Date.now().toString().slice(-6),
+        name,
+        phone,
+        email,
+        address,
+        notes,
+        width,
+        height,
+        qty,
+        meters,
+        totalQ,
+        fileName: selectedFile ? selectedFile.name : "Pendiente de envío",
+        createdAt: new Date().toISOString()
+      };
+
+      lastRegisteredOrder = orderData;
+
+      // 1. Guardar localmente en el navegador (historial)
+      saveOrderToLocalStorage(orderData);
+
+      // 2. Si las claves de Supabase están configuradas, enviar a la base de datos
+      if (BUSINESS_CONFIG.supabaseUrl && BUSINESS_CONFIG.supabaseAnonKey) {
+        try {
+          await sendToSupabase(orderData, selectedFile);
+        } catch (err) {
+          console.warn("Supabase sync warning:", err);
+        }
+      }
+
+      // Restablecer botón
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = "<span>Confirmar y Enviar Pedido</span> <span>🚀</span>";
+
+      // Mostrar modal de éxito
+      openOrderModal(orderData);
+    }
+
+    function saveOrderToLocalStorage(order) {
+      try {
+        const currentOrders = JSON.parse(localStorage.getItem("nexus_orders") || "[]");
+        currentOrders.push(order);
+        localStorage.setItem("nexus_orders", JSON.stringify(currentOrders));
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    /* Envío a Supabase vía Fetch REST Nativo (100% Vanilla, sin dependencias) */
+    async function sendToSupabase(order, file) {
+      let fileUrl = "";
+
+      // Si hay archivo, subir al bucket de Storage
+      if (file) {
+        const uploadUrl = `${BUSINESS_CONFIG.supabaseUrl}/storage/v1/object/archivos-diseno/${order.orderId}_${file.name}`;
+        const uploadRes = await fetch(uploadUrl, {
+          method: "POST",
+          headers: {
+            "apikey": BUSINESS_CONFIG.supabaseAnonKey,
+            "Authorization": `Bearer ${BUSINESS_CONFIG.supabaseAnonKey}`
+          },
+          body: file
+        });
+        if (uploadRes.ok) {
+          fileUrl = `${BUSINESS_CONFIG.supabaseUrl}/storage/v1/object/public/archivos-diseno/${order.orderId}_${file.name}`;
+        }
+      }
+
+      // Insertar pedido en la tabla 'pedidos'
+      const insertUrl = `${BUSINESS_CONFIG.supabaseUrl}/rest/v1/pedidos`;
+      await fetch(insertUrl, {
+        method: "POST",
+        headers: {
+          "apikey": BUSINESS_CONFIG.supabaseAnonKey,
+          "Authorization": `Bearer ${BUSINESS_CONFIG.supabaseAnonKey}`,
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify({
+          codigo_orden: order.orderId,
+          cliente: order.name,
+          telefono: order.phone,
+          correo: order.email,
+          ubicacion: order.address,
+          ancho_cm: order.width,
+          alto_cm: order.height,
+          cantidad: order.qty,
+          metros_lineales: order.meters,
+          precio_total_q: order.totalQ,
+          archivo_url: fileUrl,
+          notas: order.notes
+        })
+      });
+    }
+
+    /* ==========================================================================
+       8. INTEGRACIÓN CON WHATSAPP (MESSAGING NATIVO GRATUITO)
+       ========================================================================== */
+    function sendQuoteViaWhatsApp() {
+      const text = `¡Hola Nexus Studio! 🚀\n\nQuisiera consultar una cotización de impresión UV DTF:\n` +
+        `• *Tamaño de sticker:* ${currentQuote.widthCm} x ${currentQuote.heightCm} cm\n` +
+        `• *Cantidad solicitada:* ${currentQuote.qty} stickers\n` +
+        `• *Acomodo:* ${currentQuote.stickersPerRow} stickers por fila\n` +
+        `• *Metros requeridos:* ${currentQuote.billableMeters.toFixed(2)} m\n` +
+        `• *Tarifa:* Q${currentQuote.tierRate.toFixed(2)} / m\n` +
+        `• *Total aproximado:* Q${currentQuote.totalPriceQ.toFixed(2)}\n\n` +
+        `¿Qué disponibilidad tienen para entrega esta semana?`;
+
+      const url = `https://wa.me/${BUSINESS_CONFIG.phoneWhatsApp}?text=${encodeURIComponent(text)}`;
+      window.open(url, "_blank");
+    }
+
+    function sendOrderDirectToWhatsApp() {
+      const name = document.getElementById("clientName").value.trim() || "Cliente";
+      const address = document.getElementById("clientAddress").value.trim() || "Por definir";
+      const notes = document.getElementById("transparencyNotes").value.trim() || "Sin notas adicionales";
+      const fileInfo = selectedFile ? selectedFile.name : "Adjunto por este chat";
+
+      const text = `¡Hola Miguel / Nexus Studio! 📦\n\nQuiero confirmar el siguiente pedido de stickers UV DTF:\n\n` +
+        `👤 *Cliente:* ${name}\n` +
+        `📍 *Entrega:* ${address}\n` +
+        `📐 *Medida:* ${currentQuote.widthCm} x ${currentQuote.heightCm} cm\n` +
+        `🔢 *Cantidad:* ${currentQuote.qty} stickers\n` +
+        `📏 *Metros lineales:* ${currentQuote.billableMeters.toFixed(2)} m\n` +
+        `💰 *Total a pagar:* Q${currentQuote.totalPriceQ.toFixed(2)}\n` +
+        `📁 *Archivo de diseño:* ${fileInfo}\n` +
+        `📝 *Notas de transparencia:* ${notes}\n\n` +
+        `Les comparto el archivo en este chat para su revisión técnica.`;
+
+      const url = `https://wa.me/${BUSINESS_CONFIG.phoneWhatsApp}?text=${encodeURIComponent(text)}`;
+      window.open(url, "_blank");
+    }
+
+    function continueToWhatsAppModal() {
+      if (!lastRegisteredOrder) {
+        closeOrderModal();
+        return;
+      }
+      sendOrderDirectToWhatsApp();
+      closeOrderModal();
+    }
+
+    /* Modales */
+    function openOrderModal(order) {
+      const modal = document.getElementById("orderModal");
+      const summaryText = document.getElementById("modalOrderSummary");
+      summaryText.innerHTML = `Orden <strong>#${order.orderId}</strong> registrada para <strong>${order.name}</strong>.<br>` +
+        `Total: <strong>Q${order.totalQ.toFixed(2)}</strong> (${order.qty} stickers de ${order.width}x${order.height} cm).<br><br>` +
+        `Haz clic en el botón a continuación para enviar tu comprobante y archivo directamente a nuestro WhatsApp.`;
+      modal.classList.add("open");
+    }
+
+    function closeOrderModal() {
+      const modal = document.getElementById("orderModal");
+      modal.classList.remove("open");
+    }
+
+    /* FAQ Toggle */
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isActive = item.classList.contains("active");
+      document.querySelectorAll(".faq-item").forEach(faq => faq.classList.remove("active"));
+      if (!isActive) {
+        item.classList.add("active");
+      }
+    }
+  </script>
+</body>
+</html>
