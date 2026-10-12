@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexus Studio | Impresión UV DTF Industrial en Guatemala</title>
+  <title>Kroma Lab | Impresión UV DTF Industrial en Guatemala</title>
   <meta name="description" content="Impresión UV DTF con relieve 3D, barniz brillante y máxima resistencia para marcas, imprentas y maquila B2B en Guatemala. Cotiza en línea por metro lineal.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='95 85 810 705'%3E%3Cpolygon points='305,97 695,97 890,435 695,773 305,773 110,435' fill='none' stroke='%236366f1' stroke-width='95'/%3E%3Cpath fill='%23ffffff' d='M345 326v218h46v-83l21-43h-21v-92zm129 0l-56 92-26 43h26l57 83h53l-76-106 73-112zm68 0h46v176l-46 39zm5 218l50-40h94l-22 40z'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   
   <style>
     /* ==========================================================================
@@ -35,6 +36,7 @@
 
       /* Fuentes */
       --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-brand: 'Chakra Petch', 'Plus Jakarta Sans', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
 
       /* Transiciones y Sombras */
@@ -56,6 +58,7 @@
       --text-primary: #ffffff;
       --text-secondary: #94a3b8;
       --text-muted: #64748b;
+      --logo-monogram: #ffffff;
       --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(129, 140, 248, 0.12);
       --roll-bg: #091322;
       --roll-ruler: #334155;
@@ -74,6 +77,7 @@
       --text-primary: var(--brand-navy-900);
       --text-secondary: #475569;
       --text-muted: #94a3b8;
+      --logo-monogram: #111827;
       --card-shadow: 0 12px 30px -10px rgba(18, 34, 64, 0.08), 0 0 0 1px rgba(18, 34, 64, 0.06);
       --roll-bg: #ece7de;
       --roll-ruler: #cbd5e1;
@@ -269,9 +273,10 @@
     }
 
     .brand-title {
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
+      font-family: var(--font-brand);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
       line-height: 1.1;
       color: var(--text-primary);
     }
@@ -1154,34 +1159,97 @@
        ========================================================================== -->
   <nav class="navbar" id="navbar">
     <div class="container navbar-inner">
-      <!-- Logo Vectorial Nexus Studio -->
-      <a href="#inicio" class="brand-logo" aria-label="Nexus Studio Inicio">
+      <!-- Logo Vectorial Kroma Lab -->
+      <a href="#inicio" class="brand-logo" aria-label="Kroma Lab Inicio">
         <div class="logo-svg-wrap">
-          <svg viewBox="0 0 210 110" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="95 85 810 705" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="hexGradLeft" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#ff0055" />
-                <stop offset="50%" stop-color="#ffcc00" />
-                <stop offset="100%" stop-color="#00ccff" />
+              <linearGradient id="nav-top-outer" x1="305" y1="97" x2="695" y2="97" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#E12526" />
+                <stop offset="50%" stop-color="#EE6B24" />
+                <stop offset="100%" stop-color="#F5CA28" />
               </linearGradient>
-              <linearGradient id="hexGradRight" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#00ffcc" />
-                <stop offset="50%" stop-color="#0066ff" />
-                <stop offset="100%" stop-color="#cc00ff" />
+              <linearGradient id="nav-top-inner" x1="372" y1="213" x2="695" y2="155" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#B92A25" />
+                <stop offset="55%" stop-color="#C96B1D" />
+                <stop offset="100%" stop-color="#D4941A" />
+              </linearGradient>
+              <linearGradient id="nav-tr-outer" x1="695" y1="97" x2="890" y2="435" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#EDAE1F" />
+                <stop offset="55%" stop-color="#A5C626" />
+                <stop offset="100%" stop-color="#199B49" />
+              </linearGradient>
+              <linearGradient id="nav-tr-inner" x1="628" y1="213" x2="890" y2="435" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#6B9832" />
+                <stop offset="60%" stop-color="#228640" />
+                <stop offset="100%" stop-color="#0B7B42" />
+              </linearGradient>
+              <linearGradient id="nav-br-outer" x1="890" y1="435" x2="695" y2="773" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#0C9653" />
+                <stop offset="50%" stop-color="#14A88B" />
+                <stop offset="100%" stop-color="#208AD8" />
+              </linearGradient>
+              <linearGradient id="nav-br-inner" x1="756" y1="435" x2="628" y2="657" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#1AB37C" />
+                <stop offset="55%" stop-color="#2FC6C6" />
+                <stop offset="100%" stop-color="#239FE0" />
+              </linearGradient>
+              <linearGradient id="nav-bot-inner" x1="695" y1="773" x2="372" y2="657" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#1978CE" />
+                <stop offset="60%" stop-color="#1746C4" />
+                <stop offset="100%" stop-color="#2729B8" />
+              </linearGradient>
+              <linearGradient id="nav-bot-outer" x1="695" y1="773" x2="305" y2="773" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#2994E2" />
+                <stop offset="45%" stop-color="#1B32B8" />
+                <stop offset="100%" stop-color="#5D27E1" />
+              </linearGradient>
+              <linearGradient id="nav-bl-outer" x1="305" y1="773" x2="110" y2="435" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#3C16BA" />
+                <stop offset="50%" stop-color="#8719D6" />
+                <stop offset="100%" stop-color="#D721C8" />
+              </linearGradient>
+              <linearGradient id="nav-bl-inner" x1="372" y1="657" x2="177" y2="435" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#5922DC" />
+                <stop offset="50%" stop-color="#A624E8" />
+                <stop offset="100%" stop-color="#EC2CE8" />
+              </linearGradient>
+              <linearGradient id="nav-tl-outer" x1="110" y1="435" x2="305" y2="97" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#CA1F96" />
+                <stop offset="55%" stop-color="#DF2758" />
+                <stop offset="100%" stop-color="#E52726" />
+              </linearGradient>
+              <linearGradient id="nav-tl-inner" x1="244" y1="435" x2="338" y2="155" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#9A1B64" />
+                <stop offset="55%" stop-color="#BA1F38" />
+                <stop offset="100%" stop-color="#C92123" />
               </linearGradient>
             </defs>
-            <!-- Hexágono Izquierdo (N) -->
-            <polygon points="30,5 5,55 30,105 85,105 110,55 85,5" fill="none" stroke="url(#hexGradLeft)" stroke-width="7" stroke-linejoin="round" />
-            <!-- Hexágono Derecho (S) -->
-            <polygon points="125,5 100,55 125,105 180,105 205,55 180,5" fill="none" stroke="url(#hexGradRight)" stroke-width="7" stroke-linejoin="round" />
-            <!-- Letra N estilizada -->
-            <text x="42" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="54" fill="#6366f1">N</text>
-            <!-- Letra S estilizada -->
-            <text x="137" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="54" fill="#818cf8">S</text>
+            <!-- Anillo Hexagonal Facetado 3D -->
+            <g stroke-linejoin="bevel">
+              <polygon points="305,97.25 695,97.25 372,213.3" fill="url(#nav-top-outer)" stroke="url(#nav-top-outer)" stroke-width="1" />
+              <polygon points="372,213.3 695,97.25 628,213.3" fill="url(#nav-top-inner)" stroke="url(#nav-top-inner)" stroke-width="1" />
+              <polygon points="695,97.25 890,435 628,213.3" fill="url(#nav-tr-outer)" stroke="url(#nav-tr-outer)" stroke-width="1" />
+              <polygon points="628,213.3 890,435 756,435" fill="url(#nav-tr-inner)" stroke="url(#nav-tr-inner)" stroke-width="1" />
+              <polygon points="890,435 695,772.75 756,435" fill="url(#nav-br-outer)" stroke="url(#nav-br-outer)" stroke-width="1" />
+              <polygon points="756,435 695,772.75 628,656.7" fill="url(#nav-br-inner)" stroke="url(#nav-br-inner)" stroke-width="1" />
+              <polygon points="628,656.7 695,772.75 372,656.7" fill="url(#nav-bot-inner)" stroke="url(#nav-bot-inner)" stroke-width="1" />
+              <polygon points="695,772.75 305,772.75 372,656.7" fill="url(#nav-bot-outer)" stroke="url(#nav-bot-outer)" stroke-width="1" />
+              <polygon points="305,772.75 110,435 372,656.7" fill="url(#nav-bl-outer)" stroke="url(#nav-bl-outer)" stroke-width="1" />
+              <polygon points="372,656.7 110,435 244,435" fill="url(#nav-bl-inner)" stroke="url(#nav-bl-inner)" stroke-width="1" />
+              <polygon points="110,435 305,97.25 244,435" fill="url(#nav-tl-outer)" stroke="url(#nav-tl-outer)" stroke-width="1" />
+              <polygon points="244,435 305,97.25 372,213.3" fill="url(#nav-tl-inner)" stroke="url(#nav-tl-inner)" stroke-width="1" />
+            </g>
+            <!-- Monograma KL con corte diagonal unificado (Blanco en Dark Mode / Carbón en Light Mode) -->
+            <g fill="var(--logo-monogram)">
+              <path d="M 345 326 L 345 544 L 391 544 L 391 461 L 391.06055 461 L 391 460.98242 L 412.40234 418 L 391 418 L 391 326 L 345 326 z M 474 326 L 418.2832 417.5332 L 418.3457 417.57031 L 392.44336 461 L 418 461 L 475 544 L 528 544 L 452 438 L 525 326 L 474 326 z " />
+              <path d="M 542,326 H 588 V 502 L 542,541 Z" />
+              <path d="M 547,544 L 597,504 H 691 L 669,544 Z" />
+            </g>
           </svg>
         </div>
         <div class="brand-name">
-          <span class="brand-title">NEXUS STUDIO</span>
+          <span class="brand-title">KROMA <span style="font-weight: 500;">LAB</span></span>
           <span class="brand-tag">Impresión UV DTF • GT</span>
         </div>
       </a>
@@ -1204,7 +1272,7 @@
         </button>
 
         <!-- Botón Contacto WhatsApp Rápido -->
-        <a href="https://wa.me/50254066217?text=Hola%20Nexus%20Studio,%20quisiera%20informaci%C3%B3n%20sobre%20impresi%C3%B3n%20UV%20DTF" target="_blank" rel="noopener" class="btn btn-whatsapp" style="padding: 0.6rem 1.1rem; font-size: 0.88rem;">
+        <a href="https://wa.me/50254066217?text=Hola%20Kroma%20Lab,%20quisiera%20informaci%C3%B3n%20sobre%20impresi%C3%B3n%20UV%20DTF" target="_blank" rel="noopener" class="btn btn-whatsapp" style="padding: 0.6rem 1.1rem; font-size: 0.88rem;">
           <span>WhatsApp</span>
         </a>
 
@@ -1257,7 +1325,7 @@
         <a href="#pedido" class="btn btn-secondary">
           <span>Hacer un Pedido</span>
         </a>
-        <a href="https://wa.me/50254066217?text=Hola%20Miguel,%20quiero%20cotizar%20maquila%20UV%20DTF%20con%20Nexus%20Studio" target="_blank" rel="noopener" class="btn btn-whatsapp">
+        <a href="https://wa.me/50254066217?text=Hola%20Miguel,%20quiero%20cotizar%20maquila%20UV%20DTF%20con%20Kroma%20Lab" target="_blank" rel="noopener" class="btn btn-whatsapp">
           <span>WhatsApp Directo (+502 5406 6217)</span>
         </a>
       </div>
@@ -1339,7 +1407,7 @@
           <thead>
             <tr>
               <th>Característica</th>
-              <th>Nexus Studio (UV DTF)</th>
+              <th>Kroma Lab (UV DTF)</th>
               <th>Serigrafía Tradicional</th>
               <th>Vinil Autoadhesivo</th>
             </tr>
@@ -1840,7 +1908,7 @@
       </p>
       <div style="display: flex; flex-direction: column; gap: 0.75rem;">
         <button class="btn btn-whatsapp" onclick="continueToWhatsAppModal()">
-          <span>Enviar Resumen a WhatsApp de Nexus Studio</span>
+          <span>Enviar Resumen a WhatsApp de Kroma Lab</span>
         </button>
         <button class="btn btn-secondary" onclick="closeOrderModal()">
           <span>Cerrar</span>
@@ -1858,15 +1926,30 @@
         <div class="footer-brand">
           <div class="brand-logo" style="margin-bottom: 0.5rem;">
             <div class="logo-svg-wrap" style="width: 38px; height: 38px;">
-              <svg viewBox="0 0 210 110" width="100%" height="100%">
-                <polygon points="30,5 5,55 30,105 85,105 110,55 85,5" fill="none" stroke="#6366f1" stroke-width="8" />
-                <polygon points="125,5 100,55 125,105 180,105 205,55 180,5" fill="none" stroke="#818cf8" stroke-width="8" />
-                <text x="42" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="54" fill="#6366f1">N</text>
-                <text x="137" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="54" fill="#818cf8">S</text>
+              <svg viewBox="95 85 810 705" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <g stroke-linejoin="bevel">
+                  <polygon points="305,97.25 695,97.25 372,213.3" fill="url(#nav-top-outer)" stroke="url(#nav-top-outer)" stroke-width="1" />
+                  <polygon points="372,213.3 695,97.25 628,213.3" fill="url(#nav-top-inner)" stroke="url(#nav-top-inner)" stroke-width="1" />
+                  <polygon points="695,97.25 890,435 628,213.3" fill="url(#nav-tr-outer)" stroke="url(#nav-tr-outer)" stroke-width="1" />
+                  <polygon points="628,213.3 890,435 756,435" fill="url(#nav-tr-inner)" stroke="url(#nav-tr-inner)" stroke-width="1" />
+                  <polygon points="890,435 695,772.75 756,435" fill="url(#nav-br-outer)" stroke="url(#nav-br-outer)" stroke-width="1" />
+                  <polygon points="756,435 695,772.75 628,656.7" fill="url(#nav-br-inner)" stroke="url(#nav-br-inner)" stroke-width="1" />
+                  <polygon points="628,656.7 695,772.75 372,656.7" fill="url(#nav-bot-inner)" stroke="url(#nav-bot-inner)" stroke-width="1" />
+                  <polygon points="695,772.75 305,772.75 372,656.7" fill="url(#nav-bot-outer)" stroke="url(#nav-bot-outer)" stroke-width="1" />
+                  <polygon points="305,772.75 110,435 372,656.7" fill="url(#nav-bl-outer)" stroke="url(#nav-bl-outer)" stroke-width="1" />
+                  <polygon points="372,656.7 110,435 244,435" fill="url(#nav-bl-inner)" stroke="url(#nav-bl-inner)" stroke-width="1" />
+                  <polygon points="110,435 305,97.25 244,435" fill="url(#nav-tl-outer)" stroke="url(#nav-tl-outer)" stroke-width="1" />
+                  <polygon points="244,435 305,97.25 372,213.3" fill="url(#nav-tl-inner)" stroke="url(#nav-tl-inner)" stroke-width="1" />
+                </g>
+                <g fill="var(--logo-monogram)">
+                  <path d="M 345 326 L 345 544 L 391 544 L 391 461 L 391.06055 461 L 391 460.98242 L 412.40234 418 L 391 418 L 391 326 L 345 326 z M 474 326 L 418.2832 417.5332 L 418.3457 417.57031 L 392.44336 461 L 418 461 L 475 544 L 528 544 L 452 438 L 525 326 L 474 326 z " />
+                  <path d="M 542,326 H 588 V 502 L 542,541 Z" />
+                  <path d="M 547,544 L 597,504 H 691 L 669,544 Z" />
+                </g>
               </svg>
             </div>
             <div class="brand-name">
-              <span class="brand-title" style="font-size: 1.1rem;">NEXUS STUDIO</span>
+              <span class="brand-title" style="font-size: 1.15rem;">KROMA <span style="font-weight: 500;">LAB</span></span>
             </div>
           </div>
           <p>
@@ -1904,7 +1987,7 @@
       </div>
 
       <div class="footer-bottom">
-        <div>© 2026 Nexus Studio. Todos los derechos reservados. Villa Nueva, Guatemala.</div>
+        <div>© 2026 Kroma Lab. Todos los derechos reservados. Villa Nueva, Guatemala.</div>
         <div>Desarrollado en Vanilla HTML5, CSS3 y JavaScript.</div>
       </div>
     </div>
@@ -1915,7 +1998,7 @@
        ========================================================================== -->
   <script>
     /* ==========================================================================
-       1. ESTADO GLOBAL Y REGLAS DE NEGOCIO DE NEXUS STUDIO
+       1. ESTADO GLOBAL Y REGLAS DE NEGOCIO DE KROMA LAB
        ========================================================================== */
     const BUSINESS_CONFIG = {
       phoneWhatsApp: "50254066217",
@@ -1923,7 +2006,7 @@
       marginBetweenCm: 0.2,   // 2mm separation between stickers
       minimumBillableMeters: 1.0,
       
-      // Escala de Tarifas Oficial de Nexus Studio (en Quetzales Q)
+      // Escala de Tarifas Oficial de Kroma Lab (en Quetzales Q)
       tiers: [
         { maxMeters: 1.0, rate: 140.0, isFlatMin: true },
         { maxMeters: 3.0, rate: 110.0 }, // 1m a < 3m
@@ -1970,7 +2053,7 @@
        3. TEMA OSCURO / CLARO (DARK / LIGHT MODE)
        ========================================================================== */
     function initTheme() {
-      const savedTheme = localStorage.getItem("nexus_theme") || "dark";
+      const savedTheme = localStorage.getItem("kromalab_theme") || "dark";
       setTheme(savedTheme);
 
       const toggleBtn = document.getElementById("themeToggleBtn");
@@ -1983,7 +2066,7 @@
 
     function setTheme(theme) {
       document.documentElement.setAttribute("data-theme", theme);
-      localStorage.setItem("nexus_theme", theme);
+      localStorage.setItem("kromalab_theme", theme);
       const icon = document.getElementById("themeIcon");
       if (icon) {
         icon.textContent = theme === "dark" ? "☀️" : "🌙";
@@ -2375,7 +2458,7 @@
       submitBtn.innerHTML = "<span>Procesando pedido...</span>";
 
       const orderData = {
-        orderId: "NX-" + Date.now().toString().slice(-6),
+        orderId: "KL-" + Date.now().toString().slice(-6),
         name,
         phone,
         email,
@@ -2414,9 +2497,9 @@
 
     function saveOrderToLocalStorage(order) {
       try {
-        const currentOrders = JSON.parse(localStorage.getItem("nexus_orders") || "[]");
+        const currentOrders = JSON.parse(localStorage.getItem("kromalab_orders") || "[]");
         currentOrders.push(order);
-        localStorage.setItem("nexus_orders", JSON.stringify(currentOrders));
+        localStorage.setItem("kromalab_orders", JSON.stringify(currentOrders));
       } catch (e) {
         console.error(e);
       }
@@ -2473,7 +2556,7 @@
        8. INTEGRACIÓN CON WHATSAPP (MESSAGING NATIVO GRATUITO)
        ========================================================================== */
     function sendQuoteViaWhatsApp() {
-      const text = `¡Hola Nexus Studio! 🚀\n\nQuisiera consultar una cotización de impresión UV DTF:\n` +
+      const text = `¡Hola Kroma Lab! 🚀\n\nQuisiera consultar una cotización de impresión UV DTF:\n` +
         `• *Tamaño de sticker:* ${currentQuote.widthCm} x ${currentQuote.heightCm} cm\n` +
         `• *Cantidad solicitada:* ${currentQuote.qty} stickers\n` +
         `• *Acomodo:* ${currentQuote.stickersPerRow} stickers por fila\n` +
@@ -2492,7 +2575,7 @@
       const notes = document.getElementById("transparencyNotes").value.trim() || "Sin notas adicionales";
       const fileInfo = selectedFile ? selectedFile.name : "Adjunto por este chat";
 
-      const text = `¡Hola Miguel / Nexus Studio! 📦\n\nQuiero confirmar el siguiente pedido de stickers UV DTF:\n\n` +
+      const text = `¡Hola Miguel / Kroma Lab! 📦\n\nQuiero confirmar el siguiente pedido de stickers UV DTF:\n\n` +
         `👤 *Cliente:* ${name}\n` +
         `📍 *Entrega:* ${address}\n` +
         `📐 *Medida:* ${currentQuote.widthCm} x ${currentQuote.heightCm} cm\n` +
