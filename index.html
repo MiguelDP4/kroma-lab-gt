@@ -1437,7 +1437,7 @@
     <div class="container hero-content">
       <div class="badge" style="margin-bottom: 0.5rem;">
         <span class="badge-dot"></span>
-        Tecnología Industrial Audley • Villa Nueva, Guatemala
+        Tecnología Industrial UV DTF • Villa Nueva, Guatemala
       </div>
 
       <h1 class="hero-title">
@@ -1464,7 +1464,7 @@
       <!-- Tarjetas de Estadísticas / Confianza -->
       <div class="hero-stats-grid">
         <div class="stat-card">
-          <div class="stat-value">29 cm</div>
+          <div class="stat-value">28 cm</div>
           <div class="stat-label">Ancho útil de bobina (rollo 30cm)</div>
         </div>
         <div class="stat-card">
@@ -1582,7 +1582,7 @@
       <div class="badge" style="margin-bottom: 0.5rem;">Calculadora en Tiempo Real</div>
       <h2 class="section-title">Cotiza tu rollo en Quetzales (Q)</h2>
       <p class="section-subtitle">
-        Ingresa las dimensiones de tu sticker y la cantidad. Nuestro algoritmo optimiza el acomodo en la bobina de 29 cm útiles (con 2 mm de margen de corte).
+        Ingresa las dimensiones de tu sticker y la cantidad. Nuestro algoritmo optimiza el acomodo en la bobina de 28 cm útiles (con 3 mm de margen de corte).
       </p>
 
       <div class="calc-layout">
@@ -1594,9 +1594,9 @@
             <div class="form-group">
               <label class="form-label" for="stickerWidth">
                 Ancho (cm)
-                <span class="tip">Máx. 29 cm</span>
+                <span class="tip">Máx. 28 cm</span>
               </label>
-              <input type="number" id="stickerWidth" class="input-control" value="5" min="1" max="29" step="0.1">
+              <input type="number" id="stickerWidth" class="input-control" value="5" min="1" max="28" step="0.1">
             </div>
 
             <div class="form-group">
@@ -1637,7 +1637,7 @@
                   <span class="checkbox-badge" id="cuttingBadgeRate">+Q0.40 / pza</span>
                 </div>
                 <p class="checkbox-desc">
-                  Recibe tus stickers separados en recuadros individuales listos para despegar, aplicar o entregar a tus clientes. Corte recto perimetral de precisión con guillotina de rodillo.
+                  Recibe tus stickers separados en recuadros individuales listos para despegar, aplicar o entregar a tus clientes. Corte recto perimetral realizado con máquinas de precisión.
                 </p>
               </div>
             </label>
@@ -1649,7 +1649,7 @@
                 <span class="tier-tag" id="tierTag3">+250 uds: Q0.25 c/u</span>
               </div>
               <p class="cutting-policy-note">
-                * <strong>Regla de acabado:</strong> Aplica para corte recto perimetral con guillotina de rodillo industrial. No realizamos corte manual a contorno o silueta. Si no marcas esta opción, tu pedido se entrega en <strong>rollo continuo sin cortar</strong> (estándar de maquila).
+                * <strong>Regla de acabado:</strong> Cortamos tus stickers con máquinas de precisión en recuadros rectos listos para aplicar. No realizamos corte manual a contorno o silueta. Si no marcas esta opción, tu pedido se entrega en <strong>rollo continuo sin cortar</strong> (estándar de maquila).
               </p>
             </div>
           </div>
@@ -1657,14 +1657,14 @@
           <!-- Simulador Visual de Bobina -->
           <div class="simulator-container">
             <div class="simulator-header">
-              <span>ANCHO DE BOBINA: 29 CM ÚTILES</span>
+              <span>ANCHO DE BOBINA: 28 CM ÚTILES</span>
               <span id="canvasStats">5 por fila</span>
             </div>
             <div class="roll-canvas-wrap">
               <canvas id="rollCanvas" width="580" height="200"></canvas>
             </div>
             <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.5rem;">
-              * Vista esquemática del acomodo con separación automática de 2 mm para corte cómodo.
+              * Vista esquemática del acomodo con separación automática de 3 mm para corte cómodo.
             </p>
           </div>
         </div>
@@ -1696,7 +1696,7 @@
                 <strong id="resTierRate">Q140.00 / m</strong>
               </div>
               <div class="breakdown-row">
-                <span>Corte individual (Guillotina):</span>
+                <span>Corte individual de precisión:</span>
                 <strong id="resCuttingCost">No incluido (En rollo)</strong>
               </div>
             </div>
@@ -1712,7 +1712,7 @@
               <div class="total-price" id="resTotalPrice">Q140.00</div>
               <div class="unit-price-hint" id="resUnitHint">Costo estimado: Q2.80 por sticker</div>
               <div id="resCuttingDetailHint" style="display: none; font-size: 0.82rem; color: var(--text-muted); margin-top: 0.4rem;">
-                💡 Incluye impresión (Q140.00) + despiece en guillotina de rodillo (Q20.00)
+                💡 Incluye impresión (Q140.00) + despiece con máquinas de precisión (Q20.00)
               </div>
             </div>
           </div>
@@ -1861,8 +1861,8 @@
 
             <div class="input-row">
               <div class="form-group">
-                <label class="form-label" for="orderWidth">Ancho (cm) *</label>
-                <input type="number" id="orderWidth" class="input-control" value="5" min="1" max="29" step="0.1" required oninput="syncOrderWithCalc()">
+                <label class="form-label" for="orderWidth">Ancho (cm) * <span class="tip">Máx. 28 cm</span></label>
+                <input type="number" id="orderWidth" class="input-control" value="5" min="1" max="28" step="0.1" required oninput="syncOrderWithCalc()">
               </div>
               <div class="form-group">
                 <label class="form-label" for="orderHeight">Alto (cm) *</label>
@@ -1885,7 +1885,7 @@
                     <span class="checkbox-badge" id="orderCuttingBadgeRate">+Q0.40 / pza</span>
                   </div>
                   <p class="checkbox-desc" style="font-size: 0.78rem;">
-                    Corte perimetral recto con guillotina de rodillo (listos para despegar y aplicar).
+                    Corte perimetral recto con máquinas de precisión (listos para despegar y aplicar).
                   </p>
                 </div>
               </label>
@@ -1958,7 +1958,7 @@
       <div class="badge" style="margin-bottom: 0.5rem;">Diseñadores e Imprentas</div>
       <h2 class="section-title">Requisitos Técnicos de Impresión</h2>
       <p class="section-subtitle">
-        Para garantizar que la lámpara UV y los cabezales Audley reproduzcan tu arte con nitidez impecable, revisa este checklist rápido:
+        Para garantizar que la lámpara UV y nuestros cabezales de alta resolución reproduzcan tu arte con nitidez impecable, revisa este checklist rápido:
       </p>
 
       <div class="features-grid">
@@ -1995,7 +1995,7 @@
         <div class="feature-card">
           <div class="feature-icon-box">📏</div>
           <h3>Ancho Útil de Impresión</h3>
-          <p>La bobina mide 30 cm con 5 mm de margen técnico a cada lado. El área neta imprimible es de <strong>29 cm de ancho</strong>.</p>
+          <p>La bobina mide 30 cm con 1 cm de margen técnico de seguridad a cada lado. El área neta imprimible es de <strong>28 cm de ancho</strong>.</p>
         </div>
       </div>
     </div>
@@ -2045,7 +2045,7 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            Nuestra impresora Audley es de escala industrial y opera con bobina de rollo continuo. Encender la maquinaria, purgar cabezales y alinear la película para tirajes menores a 1 metro genera desperdicio técnico. Al pedir 1 metro completo (Q140.00), aprovechas para meter decenas de stickers al menor costo unitario.
+            Nuestra maquinaria es de escala industrial y opera con bobina de rollo continuo. Encender los equipos, purgar cabezales y alinear la película para tirajes menores a 1 metro genera desperdicio técnico. Al pedir 1 metro completo (Q140.00), aprovechas para meter decenas de stickers al menor costo unitario.
           </div>
         </div>
 
@@ -2070,7 +2070,7 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            Por defecto de maquila industrial, todos los pedidos se entregan en <strong>rollo continuo laminado</strong> para que cada cliente lo recorte según su conveniencia. No obstante, en Kroma Lab contamos con servicio opcional de <strong>corte recto individual de precisión</strong> con guillotina de rodillo:<br>
+            Por defecto de maquila industrial, todos los pedidos se entregan en <strong>rollo continuo laminado</strong> para que cada cliente lo recorte según su conveniencia. No obstante, en Kroma Lab contamos con servicio opcional de <strong>corte recto individual</strong> realizado con máquinas de precisión:<br>
             • <strong>1 a 50 stickers:</strong> Q0.40 por pieza.<br>
             • <strong>51 a 250 stickers:</strong> Q0.30 por pieza.<br>
             • <strong>Más de 250 stickers:</strong> Q0.25 por pieza.<br>
@@ -2197,8 +2197,8 @@
        ========================================================================== */
     const BUSINESS_CONFIG = {
       phoneWhatsApp: "50254066217",
-      printableWidthCm: 29.0, // 30cm roll minus 0.5cm mandatory margin on each side
-      marginBetweenCm: 0.2,   // 2mm separation between stickers
+      printableWidthCm: 28.0, // 30cm roll minus 1.0cm safety margin on each side
+      marginBetweenCm: 0.3,   // 3mm separation between stickers
       minimumBillableMeters: 1.0,
       
       // Escala de Tarifas Oficial de Kroma Lab (en Quetzales Q)
@@ -2210,7 +2210,7 @@
         { maxMeters: Infinity, rate: 85.0 } // 20m en adelante
       ],
 
-      // Escala de Tarifas de Corte Recto Individual con Guillotina de Rodillo (en Quetzales Q por sticker)
+      // Escala de Tarifas de Corte Recto Individual con Máquinas de Precisión (en Quetzales Q por sticker)
       cuttingTiers: [
         { maxQty: 50, rate: 0.40 },       // Hasta 50 stickers
         { maxQty: 250, rate: 0.30 },      // 51 a 250 stickers
@@ -2348,7 +2348,7 @@
       const optCutting = document.getElementById("optCutting");
       const includeCutting = optCutting ? optCutting.checked : false;
 
-      // Validación de ancho máximo de bobina (29 cm)
+      // Validación de ancho máximo de bobina (28 cm)
       if (w > BUSINESS_CONFIG.printableWidthCm) {
         w = BUSINESS_CONFIG.printableWidthCm;
         document.getElementById("stickerWidth").value = w;
@@ -2365,7 +2365,7 @@
       const rollWidth = BUSINESS_CONFIG.printableWidthCm;
       const gap = BUSINESS_CONFIG.marginBetweenCm;
 
-      // Cantidad de stickers por fila (ancho útil 29 cm con gap de 2mm)
+      // Cantidad de stickers por fila (ancho útil 28 cm con gap de 3mm)
       const stickersPerRow = Math.max(1, Math.floor((rollWidth + gap) / (w + gap)));
       const rows = Math.ceil(qty / stickersPerRow);
       
@@ -2409,7 +2409,7 @@
       // Asegurar que nunca cueste menos que el mínimo de Q140 para impresión base
       if (materialPrice < 140.0) materialPrice = 140.0;
 
-      // Cálculo de Tarifa de Corte Recto Individual con Guillotina de Rodillo
+      // Cálculo de Tarifa de Corte Recto Individual con Máquinas de Precisión
       const cuttingRateUnit = getCuttingRate(qty);
       const cuttingTotal = includeCutting ? (qty * cuttingRateUnit) : 0.0;
       const finalTotalPrice = materialPrice + cuttingTotal;
@@ -2474,7 +2474,7 @@
       if (resCuttingDetailHint) {
         if (includeCutting) {
           resCuttingDetailHint.style.display = "block";
-          resCuttingDetailHint.innerHTML = `💡 Desglose: Impresión Q${materialPrice.toFixed(2)} + Despiece con guillotina Q${cuttingTotal.toFixed(2)} (${qty} pzas a Q${cuttingRateUnit.toFixed(2)})`;
+          resCuttingDetailHint.innerHTML = `💡 Desglose: Impresión Q${materialPrice.toFixed(2)} + Despiece de precisión Q${cuttingTotal.toFixed(2)} (${qty} pzas a Q${cuttingRateUnit.toFixed(2)})`;
         } else {
           resCuttingDetailHint.style.display = "none";
         }
@@ -2520,7 +2520,7 @@
       ctx.fillStyle = isDark ? "#091322" : "#e2e8f0";
       ctx.fillRect(0, 0, width, height);
 
-      // Escala: 29 cm útiles en el ancho del canvas con margen visual de 15px
+      // Escala: 28 cm útiles en el ancho del canvas con margen visual de 15px
       const paddingX = 20;
       const availableWidthPx = width - (paddingX * 2);
       const scale = availableWidthPx / BUSINESS_CONFIG.printableWidthCm; // px por cm
@@ -2529,7 +2529,7 @@
       const stickerHeightPx = currentQuote.heightCm * scale;
       const gapPx = BUSINESS_CONFIG.marginBetweenCm * scale;
 
-      // Borde de área útil (29 cm)
+      // Borde de área útil (28 cm)
       ctx.strokeStyle = isDark ? "rgba(129, 140, 248, 0.2)" : "rgba(18, 34, 64, 0.15)";
       ctx.lineWidth = 1;
       ctx.setLineDash([4, 4]);
@@ -2568,7 +2568,7 @@
       ctx.fillStyle = isDark ? "#64748b" : "#475569";
       ctx.font = "10px monospace";
       ctx.fillText("0 cm", paddingX, height - 4);
-      ctx.fillText("29 cm útiles", width - paddingX - 65, height - 4);
+      ctx.fillText("28 cm útiles", width - paddingX - 65, height - 4);
     }
 
     function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
@@ -2850,7 +2850,7 @@
        ========================================================================== */
     function sendQuoteViaWhatsApp() {
       const cuttingText = currentQuote.includeCutting
-        ? `• *Corte / Acabado:* Sí, corte recto con guillotina (+Q${currentQuote.cuttingTotalQ.toFixed(2)} por ${currentQuote.qty} pzas a Q${currentQuote.cuttingRateUnit.toFixed(2)} c/u)\n`
+        ? `• *Corte / Acabado:* Sí, corte recto con máquinas de precisión (+Q${currentQuote.cuttingTotalQ.toFixed(2)} por ${currentQuote.qty} pzas a Q${currentQuote.cuttingRateUnit.toFixed(2)} c/u)\n`
         : `• *Corte / Acabado:* No (Entrega estándar en rollo continuo)\n`;
 
       const text = `¡Hola Kroma Lab! 🚀\n\nQuisiera consultar una cotización de impresión UV DTF:\n` +
