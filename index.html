@@ -1634,7 +1634,7 @@
               <div class="checkbox-content">
                 <div class="checkbox-header">
                   <span class="checkbox-title">✂️ Entregar cortados individualmente</span>
-                  <span class="checkbox-badge" id="cuttingBadgeRate">+Q0.40 / pza</span>
+                  <span class="checkbox-badge" id="cuttingBadgeRate">+Q0.75 / pza</span>
                 </div>
                 <p class="checkbox-desc">
                   Recibe tus stickers separados en recuadros individuales listos para despegar, aplicar o entregar a tus clientes. Corte recto perimetral realizado con máquinas de precisión.
@@ -1644,12 +1644,12 @@
 
             <div class="cutting-details">
               <div class="cutting-tier-info">
-                <span class="tier-tag active" id="tierTag1">1 - 50 uds: Q0.40 c/u</span>
-                <span class="tier-tag" id="tierTag2">51 - 250 uds: Q0.30 c/u</span>
-                <span class="tier-tag" id="tierTag3">+250 uds: Q0.25 c/u</span>
+                <span class="tier-tag active" id="tierTag1">1 - 50 uds: Q0.75 c/u</span>
+                <span class="tier-tag" id="tierTag2">51 - 200 uds: Q0.50 c/u</span>
+                <span class="tier-tag" id="tierTag3">+200 uds: Q0.35 c/u</span>
               </div>
               <p class="cutting-policy-note">
-                * <strong>Regla de acabado:</strong> Cortamos tus stickers con máquinas de precisión en recuadros rectos listos para aplicar. No realizamos corte manual a contorno o silueta. Si no marcas esta opción, tu pedido se entrega en <strong>rollo continuo sin cortar</strong> (estándar de maquila).
+                * <strong>Regla de acabado:</strong> Cortamos tus stickers con máquinas de precisión en recuadros rectos listos para aplicar (mínimo de servicio Q20.00). No realizamos corte manual a contorno o silueta. Si no marcas esta opción, tu pedido se entrega en <strong>rollo continuo sin cortar</strong> (estándar de maquila).
               </p>
             </div>
           </div>
@@ -1882,7 +1882,7 @@
                 <div class="checkbox-content">
                   <div class="checkbox-header" style="margin-bottom: 0.15rem;">
                     <span class="checkbox-title" style="font-size: 0.92rem;">✂️ Entregar cortados individualmente</span>
-                    <span class="checkbox-badge" id="orderCuttingBadgeRate">+Q0.40 / pza</span>
+                    <span class="checkbox-badge" id="orderCuttingBadgeRate">+Q0.75 / pza</span>
                   </div>
                   <p class="checkbox-desc" style="font-size: 0.78rem;">
                     Corte perimetral recto con máquinas de precisión (listos para despegar y aplicar).
@@ -2071,10 +2071,10 @@
           </button>
           <div class="faq-answer">
             Por defecto de maquila industrial, todos los pedidos se entregan en <strong>rollo continuo laminado</strong> para que cada cliente lo recorte según su conveniencia. No obstante, en Kroma Lab contamos con servicio opcional de <strong>corte recto individual</strong> realizado con máquinas de precisión:<br>
-            • <strong>1 a 50 stickers:</strong> Q0.40 por pieza.<br>
-            • <strong>51 a 250 stickers:</strong> Q0.30 por pieza.<br>
-            • <strong>Más de 250 stickers:</strong> Q0.25 por pieza.<br>
-            <em>*Nota importante: Este servicio aplica para recuadros rectos individuales listos para aplicar. No incluye corte manual a contorno o silueta.</em>
+            • <strong>1 a 50 stickers:</strong> Q0.75 por pieza.<br>
+            • <strong>51 a 200 stickers:</strong> Q0.50 por pieza.<br>
+            • <strong>Más de 200 stickers:</strong> Q0.35 por pieza.<br>
+            <em>*Nota importante: Este servicio aplica para recuadros rectos individuales listos para aplicar (tarifa mínima de servicio Q20.00). No incluye corte manual a contorno o silueta.</em>
           </div>
         </div>
 
@@ -2211,10 +2211,11 @@
       ],
 
       // Escala de Tarifas de Corte Recto Individual con Máquinas de Precisión (en Quetzales Q por sticker)
+      cuttingMinimumQ: 20.0, // Cobro mínimo para el servicio de despiece
       cuttingTiers: [
-        { maxQty: 50, rate: 0.40 },       // Hasta 50 stickers
-        { maxQty: 250, rate: 0.30 },      // 51 a 250 stickers
-        { maxQty: Infinity, rate: 0.25 }  // Más de 250 stickers
+        { maxQty: 50, rate: 0.75 },       // 1 a 50 stickers
+        { maxQty: 200, rate: 0.50 },      // 51 a 200 stickers
+        { maxQty: Infinity, rate: 0.35 }  // Más de 200 stickers
       ],
       
       // Configuración de Supabase (Opcional - Funciona sin configuración por LocalStorage + WhatsApp)
@@ -2228,8 +2229,9 @@
       heightCm: 5.0,
       qty: 50,
       includeCutting: false,
-      cuttingRateUnit: 0.40,
+      cuttingRateUnit: 0.75,
       cuttingTotalQ: 0.0,
+      isCuttingMinApplied: false,
       materialPriceQ: 140.0,
       stickersPerRow: 5,
       rows: 10,
@@ -2246,7 +2248,7 @@
       for (const tier of BUSINESS_CONFIG.cuttingTiers) {
         if (qty <= tier.maxQty) return tier.rate;
       }
-      return 0.25;
+      return 0.35;
     }
 
     let selectedFile = null;
@@ -2411,7 +2413,10 @@
 
       // Cálculo de Tarifa de Corte Recto Individual con Máquinas de Precisión
       const cuttingRateUnit = getCuttingRate(qty);
-      const cuttingTotal = includeCutting ? (qty * cuttingRateUnit) : 0.0;
+      const rawCuttingCost = qty * cuttingRateUnit;
+      const isCuttingMinApplied = includeCutting && rawCuttingCost < BUSINESS_CONFIG.cuttingMinimumQ;
+      const effectiveCuttingCost = Math.max(BUSINESS_CONFIG.cuttingMinimumQ, rawCuttingCost);
+      const cuttingTotal = includeCutting ? effectiveCuttingCost : 0.0;
       const finalTotalPrice = materialPrice + cuttingTotal;
       const unitPrice = finalTotalPrice / qty;
 
@@ -2424,6 +2429,7 @@
       currentQuote.materialPriceQ = materialPrice;
       currentQuote.cuttingRateUnit = cuttingRateUnit;
       currentQuote.cuttingTotalQ = cuttingTotal;
+      currentQuote.isCuttingMinApplied = isCuttingMinApplied;
       currentQuote.totalPriceQ = finalTotalPrice;
       currentQuote.unitPriceQ = unitPrice;
       currentQuote.maxInOneMeter = maxInOneMeter;
@@ -2440,7 +2446,10 @@
       const resCuttingCost = document.getElementById("resCuttingCost");
       if (resCuttingCost) {
         if (includeCutting) {
-          resCuttingCost.innerHTML = `<span style="color: var(--success); font-weight: 700;">+Q${cuttingTotal.toFixed(2)}</span> <span style="font-size: 0.82rem; font-weight: 500; color: var(--text-secondary);">(Q${cuttingRateUnit.toFixed(2)} c/u)</span>`;
+          const cutHintText = isCuttingMinApplied 
+            ? `(Mínimo Q${BUSINESS_CONFIG.cuttingMinimumQ.toFixed(2)})` 
+            : `(Q${cuttingRateUnit.toFixed(2)} c/u)`;
+          resCuttingCost.innerHTML = `<span style="color: var(--success); font-weight: 700;">+Q${cuttingTotal.toFixed(2)}</span> <span style="font-size: 0.82rem; font-weight: 500; color: var(--text-secondary);">${cutHintText}</span>`;
         } else {
           resCuttingCost.textContent = "No incluido (En rollo)";
         }
@@ -2461,8 +2470,8 @@
       const tag3 = document.getElementById("tierTag3");
       if (tag1 && tag2 && tag3) {
         tag1.classList.toggle("active", qty <= 50);
-        tag2.classList.toggle("active", qty > 50 && qty <= 250);
-        tag3.classList.toggle("active", qty > 250);
+        tag2.classList.toggle("active", qty > 50 && qty <= 200);
+        tag3.classList.toggle("active", qty > 200);
       }
 
       // Precios totales
@@ -2474,7 +2483,10 @@
       if (resCuttingDetailHint) {
         if (includeCutting) {
           resCuttingDetailHint.style.display = "block";
-          resCuttingDetailHint.innerHTML = `💡 Desglose: Impresión Q${materialPrice.toFixed(2)} + Despiece de precisión Q${cuttingTotal.toFixed(2)} (${qty} pzas a Q${cuttingRateUnit.toFixed(2)})`;
+          const minText = isCuttingMinApplied 
+            ? ` (aplica tarifa mínima de servicio)` 
+            : ` (${qty} pzas a Q${cuttingRateUnit.toFixed(2)})`;
+          resCuttingDetailHint.innerHTML = `💡 Desglose: Impresión Q${materialPrice.toFixed(2)} + Despiece de precisión Q${cuttingTotal.toFixed(2)}${minText}`;
         } else {
           resCuttingDetailHint.style.display = "none";
         }
@@ -2849,8 +2861,11 @@
        8. INTEGRACIÓN CON WHATSAPP (MESSAGING NATIVO GRATUITO)
        ========================================================================== */
     function sendQuoteViaWhatsApp() {
+      const cutDetail = currentQuote.isCuttingMinApplied 
+        ? `(+Q${currentQuote.cuttingTotalQ.toFixed(2)} tarifa base mínima)`
+        : `(+Q${currentQuote.cuttingTotalQ.toFixed(2)} por ${currentQuote.qty} pzas a Q${currentQuote.cuttingRateUnit.toFixed(2)} c/u)`;
       const cuttingText = currentQuote.includeCutting
-        ? `• *Corte / Acabado:* Sí, corte recto con máquinas de precisión (+Q${currentQuote.cuttingTotalQ.toFixed(2)} por ${currentQuote.qty} pzas a Q${currentQuote.cuttingRateUnit.toFixed(2)} c/u)\n`
+        ? `• *Corte / Acabado:* Sí, corte recto con máquinas de precisión ${cutDetail}\n`
         : `• *Corte / Acabado:* No (Entrega estándar en rollo continuo)\n`;
 
       const text = `¡Hola Kroma Lab! 🚀\n\nQuisiera consultar una cotización de impresión UV DTF:\n` +
