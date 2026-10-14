@@ -1472,7 +1472,7 @@
           <div class="stat-label">Relieve táctil + Barniz UV total</div>
         </div>
         <div class="stat-card">
-          <div class="stat-value">Q75<small style="font-size: 0.9rem;">/m</small></div>
+          <div class="stat-value">Q85<small style="font-size: 0.9rem;">/m</small></div>
           <div class="stat-label">Tarifa de mayoreo (20m en adelante)</div>
         </div>
         <div class="stat-card">
@@ -2057,10 +2057,10 @@
           <div class="faq-answer">
             Trabajamos con tarifas escalonadas y agresivas de maquila:<br>
             • <strong>1 metro:</strong> Q140.00 fijo.<br>
-            • <strong>2 a 2.9 metros:</strong> Q110.00 por metro.<br>
-            • <strong>3 a 9.9 metros:</strong> Q100.00 por metro.<br>
-            • <strong>10 a 19.9 metros:</strong> Q90.00 por metro.<br>
-            • <strong>20 metros o más:</strong> Q75.00 por metro (Precio piso especial para talleres e imprentas).
+            • <strong>2 a 4.9 metros:</strong> Q115.00 por metro.<br>
+            • <strong>5 a 9.9 metros:</strong> Q105.00 por metro.<br>
+            • <strong>10 a 19.9 metros:</strong> Q95.00 por metro.<br>
+            • <strong>20 metros o más:</strong> Q85.00 por metro (Precio piso especial para talleres e imprentas).
           </div>
         </div>
 
@@ -2204,10 +2204,10 @@
       // Escala de Tarifas Oficial de Kroma Lab (en Quetzales Q)
       tiers: [
         { maxMeters: 1.0, rate: 140.0, isFlatMin: true },
-        { maxMeters: 3.0, rate: 110.0 }, // 1m a < 3m
-        { maxMeters: 10.0, rate: 100.0 }, // 3m a < 10m
-        { maxMeters: 20.0, rate: 90.0 },  // 10m a < 20m
-        { maxMeters: Infinity, rate: 75.0 } // 20m en adelante
+        { maxMeters: 5.0, rate: 115.0 }, // 1m a < 5m
+        { maxMeters: 10.0, rate: 105.0 }, // 5m a < 10m
+        { maxMeters: 20.0, rate: 95.0 },  // 10m a < 20m
+        { maxMeters: Infinity, rate: 85.0 } // 20m en adelante
       ],
 
       // Escala de Tarifas de Corte Recto Individual con Guillotina de Rodillo (en Quetzales Q por sticker)
@@ -2388,21 +2388,21 @@
         tierRate = 140.0;
         materialPrice = 140.0;
         isUnderMin = actualLinearMeters < 1.0;
-      } else if (actualLinearMeters < 3.0) {
-        // Rango de 1 a 3 metros (Tarifa de Q110/m)
-        tierRate = 110.0;
+      } else if (actualLinearMeters < 5.0) {
+        // Rango de 1 a 5 metros (Tarifa de Q115/m)
+        tierRate = 115.0;
         materialPrice = actualLinearMeters * tierRate;
       } else if (actualLinearMeters < 10.0) {
-        // Rango de 3 a 10 metros (Tarifa de Q100/m)
-        tierRate = 100.0;
+        // Rango de 5 a 10 metros (Tarifa de Q105/m)
+        tierRate = 105.0;
         materialPrice = actualLinearMeters * tierRate;
       } else if (actualLinearMeters < 20.0) {
-        // Rango de 10 a 20 metros (Tarifa de Q90/m)
-        tierRate = 90.0;
+        // Rango de 10 a 20 metros (Tarifa de Q95/m)
+        tierRate = 95.0;
         materialPrice = actualLinearMeters * tierRate;
       } else {
-        // Mayoreo 20+ metros (Tarifa piso de Q75/m)
-        tierRate = 75.0;
+        // Mayoreo 20+ metros (Tarifa piso de Q85/m)
+        tierRate = 85.0;
         materialPrice = actualLinearMeters * tierRate;
       }
 
