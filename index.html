@@ -694,6 +694,137 @@
       display: block;
     }
 
+    /* Tarjeta y Checkbox de Opción de Corte */
+    .cutting-option-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+      margin: 1.25rem 0 0 0;
+      transition: var(--transition);
+    }
+
+    .cutting-option-card:hover {
+      border-color: rgba(129, 140, 248, 0.4);
+    }
+
+    .cutting-option-card.active {
+      border-color: var(--brand-periwinkle);
+      background: rgba(129, 140, 248, 0.08);
+      box-shadow: 0 0 0 1px var(--brand-periwinkle);
+    }
+
+    .checkbox-wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .checkbox-wrapper input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--border-color);
+      border-radius: 6px;
+      background: var(--bg-surface);
+      cursor: pointer;
+      display: grid;
+      place-content: center;
+      margin-top: 0.15rem;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+
+    .checkbox-wrapper input[type="checkbox"]:checked {
+      background: var(--brand-periwinkle);
+      border-color: var(--brand-periwinkle);
+    }
+
+    .checkbox-wrapper input[type="checkbox"]:checked::before {
+      content: "✓";
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .checkbox-content {
+      flex: 1;
+    }
+
+    .checkbox-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.25rem;
+    }
+
+    .checkbox-title {
+      font-weight: 700;
+      font-size: 0.98rem;
+      color: var(--text-primary);
+    }
+
+    .checkbox-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--success);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .checkbox-desc {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .cutting-details {
+      margin-top: 0.9rem;
+      padding-top: 0.85rem;
+      border-top: 1px dashed var(--border-color);
+    }
+
+    .cutting-tier-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .tier-tag {
+      font-size: 0.74rem;
+      font-family: var(--font-mono);
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+
+    .tier-tag.active {
+      border-color: var(--brand-periwinkle);
+      color: var(--brand-periwinkle);
+      font-weight: 700;
+      background: rgba(129, 140, 248, 0.12);
+    }
+
+    .cutting-policy-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin: 0;
+    }
+
     /* Resultados del cotizador */
     .calc-results-panel {
       display: flex;
@@ -1496,6 +1627,33 @@
             <input type="number" id="stickerQty" class="input-control" value="50" min="1" max="5000" step="1">
           </div>
 
+          <!-- Opción de Acabado: Corte Recto Individual -->
+          <div class="cutting-option-card" id="cuttingCard">
+            <label class="checkbox-wrapper" for="optCutting">
+              <input type="checkbox" id="optCutting">
+              <div class="checkbox-content">
+                <div class="checkbox-header">
+                  <span class="checkbox-title">✂️ Entregar cortados individualmente</span>
+                  <span class="checkbox-badge" id="cuttingBadgeRate">+Q0.40 / pza</span>
+                </div>
+                <p class="checkbox-desc">
+                  Recibe tus stickers separados en recuadros individuales listos para despegar, aplicar o entregar a tus clientes. Corte recto perimetral de precisión con guillotina de rodillo.
+                </p>
+              </div>
+            </label>
+
+            <div class="cutting-details">
+              <div class="cutting-tier-info">
+                <span class="tier-tag active" id="tierTag1">1 - 50 uds: Q0.40 c/u</span>
+                <span class="tier-tag" id="tierTag2">51 - 250 uds: Q0.30 c/u</span>
+                <span class="tier-tag" id="tierTag3">+250 uds: Q0.25 c/u</span>
+              </div>
+              <p class="cutting-policy-note">
+                * <strong>Regla de acabado:</strong> Aplica para corte recto perimetral con guillotina de rodillo industrial. No realizamos corte manual a contorno o silueta. Si no marcas esta opción, tu pedido se entrega en <strong>rollo continuo sin cortar</strong> (estándar de maquila).
+              </p>
+            </div>
+          </div>
+
           <!-- Simulador Visual de Bobina -->
           <div class="simulator-container">
             <div class="simulator-header">
@@ -1537,6 +1695,10 @@
                 <span>Tarifa aplicada por metro:</span>
                 <strong id="resTierRate">Q140.00 / m</strong>
               </div>
+              <div class="breakdown-row">
+                <span>Corte individual (Guillotina):</span>
+                <strong id="resCuttingCost">No incluido (En rollo)</strong>
+              </div>
             </div>
 
             <!-- Aviso de mínimo de compra o espacio extra aprovechable -->
@@ -1549,6 +1711,9 @@
               <div class="total-label">Total Estimado de Inversión</div>
               <div class="total-price" id="resTotalPrice">Q140.00</div>
               <div class="unit-price-hint" id="resUnitHint">Costo estimado: Q2.80 por sticker</div>
+              <div id="resCuttingDetailHint" style="display: none; font-size: 0.82rem; color: var(--text-muted); margin-top: 0.4rem;">
+                💡 Incluye impresión (Q140.00) + despiece en guillotina de rodillo (Q20.00)
+              </div>
             </div>
           </div>
 
@@ -1708,6 +1873,22 @@
             <div class="form-group">
               <label class="form-label" for="orderQty">Cantidad de stickers *</label>
               <input type="number" id="orderQty" class="input-control" value="50" min="1" max="5000" required oninput="syncOrderWithCalc()">
+            </div>
+
+            <!-- Checkbox de acabado en el pedido -->
+            <div class="cutting-option-card" style="margin-top: 1rem; padding: 0.85rem 1.1rem;">
+              <label class="checkbox-wrapper" for="orderOptCutting">
+                <input type="checkbox" id="orderOptCutting" onchange="syncOrderCuttingWithCalc()">
+                <div class="checkbox-content">
+                  <div class="checkbox-header" style="margin-bottom: 0.15rem;">
+                    <span class="checkbox-title" style="font-size: 0.92rem;">✂️ Entregar cortados individualmente</span>
+                    <span class="checkbox-badge" id="orderCuttingBadgeRate">+Q0.40 / pza</span>
+                  </div>
+                  <p class="checkbox-desc" style="font-size: 0.78rem;">
+                    Corte perimetral recto con guillotina de rodillo (listos para despegar y aplicar).
+                  </p>
+                </div>
+              </label>
             </div>
           </div>
 
@@ -1885,6 +2066,20 @@
 
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
+            <span>¿Los stickers se entregan cortados en piezas individuales o en rollo?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Por defecto de maquila industrial, todos los pedidos se entregan en <strong>rollo continuo laminado</strong> para que cada cliente lo recorte según su conveniencia. No obstante, en Kroma Lab contamos con servicio opcional de <strong>corte recto individual de precisión</strong> con guillotina de rodillo:<br>
+            • <strong>1 a 50 stickers:</strong> Q0.40 por pieza.<br>
+            • <strong>51 a 250 stickers:</strong> Q0.30 por pieza.<br>
+            • <strong>Más de 250 stickers:</strong> Q0.25 por pieza.<br>
+            <em>*Nota importante: Este servicio aplica para recuadros rectos individuales listos para aplicar. No incluye corte manual a contorno o silueta.</em>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
             <span>¿Qué métodos de pago aceptan?</span>
             <span class="faq-icon">+</span>
           </button>
@@ -2014,6 +2209,13 @@
         { maxMeters: 20.0, rate: 90.0 },  // 10m a < 20m
         { maxMeters: Infinity, rate: 75.0 } // 20m en adelante
       ],
+
+      // Escala de Tarifas de Corte Recto Individual con Guillotina de Rodillo (en Quetzales Q por sticker)
+      cuttingTiers: [
+        { maxQty: 50, rate: 0.40 },       // Hasta 50 stickers
+        { maxQty: 250, rate: 0.30 },      // 51 a 250 stickers
+        { maxQty: Infinity, rate: 0.25 }  // Más de 250 stickers
+      ],
       
       // Configuración de Supabase (Opcional - Funciona sin configuración por LocalStorage + WhatsApp)
       supabaseUrl: "", // Pega aquí tu Project URL de Supabase
@@ -2025,6 +2227,10 @@
       widthCm: 5.0,
       heightCm: 5.0,
       qty: 50,
+      includeCutting: false,
+      cuttingRateUnit: 0.40,
+      cuttingTotalQ: 0.0,
+      materialPriceQ: 140.0,
       stickersPerRow: 5,
       rows: 10,
       physicalLengthCm: 51.8,
@@ -2035,6 +2241,13 @@
       maxInOneMeter: 95,
       isUnderMin: true
     };
+
+    function getCuttingRate(qty) {
+      for (const tier of BUSINESS_CONFIG.cuttingTiers) {
+        if (qty <= tier.maxQty) return tier.rate;
+      }
+      return 0.25;
+    }
 
     let selectedFile = null;
     let lastRegisteredOrder = null;
@@ -2097,12 +2310,23 @@
       const widthInput = document.getElementById("stickerWidth");
       const heightInput = document.getElementById("stickerHeight");
       const qtyInput = document.getElementById("stickerQty");
+      const optCutting = document.getElementById("optCutting");
 
       [widthInput, heightInput, qtyInput].forEach(input => {
-        input.addEventListener("input", () => {
+        if (input) {
+          input.addEventListener("input", () => {
+            calculateQuote();
+          });
+        }
+      });
+
+      if (optCutting) {
+        optCutting.addEventListener("change", () => {
+          const orderCut = document.getElementById("orderOptCutting");
+          if (orderCut) orderCut.checked = optCutting.checked;
           calculateQuote();
         });
-      });
+      }
     }
 
     function setPresetSize(w, h, btnElement) {
@@ -2121,6 +2345,8 @@
       let w = parseFloat(document.getElementById("stickerWidth").value) || 1;
       let h = parseFloat(document.getElementById("stickerHeight").value) || 1;
       let qty = parseInt(document.getElementById("stickerQty").value) || 1;
+      const optCutting = document.getElementById("optCutting");
+      const includeCutting = optCutting ? optCutting.checked : false;
 
       // Validación de ancho máximo de bobina (29 cm)
       if (w > BUSINESS_CONFIG.printableWidthCm) {
@@ -2134,6 +2360,7 @@
       currentQuote.widthCm = w;
       currentQuote.heightCm = h;
       currentQuote.qty = qty;
+      currentQuote.includeCutting = includeCutting;
 
       const rollWidth = BUSINESS_CONFIG.printableWidthCm;
       const gap = BUSINESS_CONFIG.marginBetweenCm;
@@ -2153,36 +2380,40 @@
       // Cálculo de Tarifa Escalonada según los metros utilizados
       let billableMeters = actualLinearMeters;
       let tierRate = 140.0;
-      let totalPrice = 0.0;
+      let materialPrice = 0.0;
       let isUnderMin = false;
 
       if (actualLinearMeters <= 1.0) {
         billableMeters = 1.0;
         tierRate = 140.0;
-        totalPrice = 140.0;
+        materialPrice = 140.0;
         isUnderMin = actualLinearMeters < 1.0;
       } else if (actualLinearMeters < 3.0) {
         // Rango de 1 a 3 metros (Tarifa de Q110/m)
         tierRate = 110.0;
-        totalPrice = actualLinearMeters * tierRate;
+        materialPrice = actualLinearMeters * tierRate;
       } else if (actualLinearMeters < 10.0) {
         // Rango de 3 a 10 metros (Tarifa de Q100/m)
         tierRate = 100.0;
-        totalPrice = actualLinearMeters * tierRate;
+        materialPrice = actualLinearMeters * tierRate;
       } else if (actualLinearMeters < 20.0) {
         // Rango de 10 a 20 metros (Tarifa de Q90/m)
         tierRate = 90.0;
-        totalPrice = actualLinearMeters * tierRate;
+        materialPrice = actualLinearMeters * tierRate;
       } else {
         // Mayoreo 20+ metros (Tarifa piso de Q75/m)
         tierRate = 75.0;
-        totalPrice = actualLinearMeters * tierRate;
+        materialPrice = actualLinearMeters * tierRate;
       }
 
-      // Asegurar que nunca cueste menos que el mínimo de Q140
-      if (totalPrice < 140.0) totalPrice = 140.0;
+      // Asegurar que nunca cueste menos que el mínimo de Q140 para impresión base
+      if (materialPrice < 140.0) materialPrice = 140.0;
 
-      const unitPrice = totalPrice / qty;
+      // Cálculo de Tarifa de Corte Recto Individual con Guillotina de Rodillo
+      const cuttingRateUnit = getCuttingRate(qty);
+      const cuttingTotal = includeCutting ? (qty * cuttingRateUnit) : 0.0;
+      const finalTotalPrice = materialPrice + cuttingTotal;
+      const unitPrice = finalTotalPrice / qty;
 
       // Guardar en estado
       currentQuote.stickersPerRow = stickersPerRow;
@@ -2190,7 +2421,10 @@
       currentQuote.physicalLengthCm = physicalLengthCm;
       currentQuote.billableMeters = billableMeters;
       currentQuote.tierRate = tierRate;
-      currentQuote.totalPriceQ = totalPrice;
+      currentQuote.materialPriceQ = materialPrice;
+      currentQuote.cuttingRateUnit = cuttingRateUnit;
+      currentQuote.cuttingTotalQ = cuttingTotal;
+      currentQuote.totalPriceQ = finalTotalPrice;
       currentQuote.unitPriceQ = unitPrice;
       currentQuote.maxInOneMeter = maxInOneMeter;
       currentQuote.isUnderMin = isUnderMin;
@@ -2201,9 +2435,50 @@
       document.getElementById("resPhysicalLength").textContent = `${physicalLengthCm.toFixed(1)} cm`;
       document.getElementById("resBillableMeters").textContent = `${billableMeters.toFixed(2)} m ${isUnderMin ? '(Mínimo 1m)' : ''}`;
       document.getElementById("resTierRate").textContent = `Q${tierRate.toFixed(2)} / m`;
-      document.getElementById("resTotalPrice").textContent = `Q${totalPrice.toFixed(2)}`;
-      document.getElementById("resUnitHint").textContent = `Costo aprox: Q${unitPrice.toFixed(2)} por sticker`;
+
+      // Desglose de corte
+      const resCuttingCost = document.getElementById("resCuttingCost");
+      if (resCuttingCost) {
+        if (includeCutting) {
+          resCuttingCost.innerHTML = `<span style="color: var(--success); font-weight: 700;">+Q${cuttingTotal.toFixed(2)}</span> <span style="font-size: 0.82rem; font-weight: 500; color: var(--text-secondary);">(Q${cuttingRateUnit.toFixed(2)} c/u)</span>`;
+        } else {
+          resCuttingCost.textContent = "No incluido (En rollo)";
+        }
+      }
+
+      // Estilo de tarjeta activa y badges de corte
+      const cuttingCard = document.getElementById("cuttingCard");
+      if (cuttingCard) cuttingCard.classList.toggle("active", includeCutting);
+
+      const cuttingBadgeRate = document.getElementById("cuttingBadgeRate");
+      if (cuttingBadgeRate) cuttingBadgeRate.textContent = `+Q${cuttingRateUnit.toFixed(2)} / pza`;
+
+      const orderCuttingBadgeRate = document.getElementById("orderCuttingBadgeRate");
+      if (orderCuttingBadgeRate) orderCuttingBadgeRate.textContent = `+Q${cuttingRateUnit.toFixed(2)} / pza`;
+
+      const tag1 = document.getElementById("tierTag1");
+      const tag2 = document.getElementById("tierTag2");
+      const tag3 = document.getElementById("tierTag3");
+      if (tag1 && tag2 && tag3) {
+        tag1.classList.toggle("active", qty <= 50);
+        tag2.classList.toggle("active", qty > 50 && qty <= 250);
+        tag3.classList.toggle("active", qty > 250);
+      }
+
+      // Precios totales
+      document.getElementById("resTotalPrice").textContent = `Q${finalTotalPrice.toFixed(2)}`;
+      document.getElementById("resUnitHint").textContent = `Costo aprox: Q${unitPrice.toFixed(2)} por sticker ${includeCutting ? '(impreso y cortado)' : ''}`;
       document.getElementById("canvasStats").textContent = `${stickersPerRow} por fila (${(stickersPerRow * w).toFixed(1)} cm)`;
+
+      const resCuttingDetailHint = document.getElementById("resCuttingDetailHint");
+      if (resCuttingDetailHint) {
+        if (includeCutting) {
+          resCuttingDetailHint.style.display = "block";
+          resCuttingDetailHint.innerHTML = `💡 Desglose: Impresión Q${materialPrice.toFixed(2)} + Despiece con guillotina Q${cuttingTotal.toFixed(2)} (${qty} pzas a Q${cuttingRateUnit.toFixed(2)})`;
+        } else {
+          resCuttingDetailHint.style.display = "none";
+        }
+      }
 
       // Manejar aviso de mínimo
       const noticeBox = document.getElementById("minimumNotice");
@@ -2215,7 +2490,7 @@
       }
 
       // Sincronizar con el panel de pedidos si no se ha modificado manualmente
-      document.getElementById("orderTotalDisplay").textContent = `Q${totalPrice.toFixed(2)}`;
+      document.getElementById("orderTotalDisplay").textContent = `Q${finalTotalPrice.toFixed(2)}`;
 
       // Dibujar simulación gráfica
       drawRollCanvas();
@@ -2321,6 +2596,10 @@
       document.getElementById("orderWidth").value = currentQuote.widthCm;
       document.getElementById("orderHeight").value = currentQuote.heightCm;
       document.getElementById("orderQty").value = currentQuote.qty;
+      const orderCut = document.getElementById("orderOptCutting");
+      if (orderCut) {
+        orderCut.checked = currentQuote.includeCutting;
+      }
       document.getElementById("orderTotalDisplay").textContent = `Q${currentQuote.totalPriceQ.toFixed(2)}`;
 
       const orderSection = document.getElementById("pedido");
@@ -2333,13 +2612,21 @@
       const w = parseFloat(document.getElementById("orderWidth").value) || 5;
       const h = parseFloat(document.getElementById("orderHeight").value) || 5;
       const qty = parseInt(document.getElementById("orderQty").value) || 50;
+      const orderCut = document.getElementById("orderOptCutting");
+      const cut = orderCut ? orderCut.checked : false;
 
       document.getElementById("stickerWidth").value = w;
       document.getElementById("stickerHeight").value = h;
       document.getElementById("stickerQty").value = qty;
+      const mainCut = document.getElementById("optCutting");
+      if (mainCut) mainCut.checked = cut;
 
       calculateQuote();
       document.getElementById("orderTotalDisplay").textContent = `Q${currentQuote.totalPriceQ.toFixed(2)}`;
+    }
+
+    function syncOrderCuttingWithCalc() {
+      syncOrderWithCalc();
     }
 
     /* ==========================================================================
@@ -2468,6 +2755,10 @@
         height,
         qty,
         meters,
+        withCutting: currentQuote.includeCutting,
+        cuttingCostQ: currentQuote.cuttingTotalQ,
+        cuttingRateUnit: currentQuote.cuttingRateUnit,
+        materialPriceQ: currentQuote.materialPriceQ,
         totalQ,
         fileName: selectedFile ? selectedFile.name : "Pendiente de envío",
         createdAt: new Date().toISOString()
@@ -2546,6 +2837,8 @@
           cantidad: order.qty,
           metros_lineales: order.meters,
           precio_total_q: order.totalQ,
+          corte_individual: order.withCutting,
+          costo_corte_q: order.cuttingCostQ,
           archivo_url: fileUrl,
           notas: order.notes
         })
@@ -2556,13 +2849,18 @@
        8. INTEGRACIÓN CON WHATSAPP (MESSAGING NATIVO GRATUITO)
        ========================================================================== */
     function sendQuoteViaWhatsApp() {
+      const cuttingText = currentQuote.includeCutting
+        ? `• *Corte / Acabado:* Sí, corte recto con guillotina (+Q${currentQuote.cuttingTotalQ.toFixed(2)} por ${currentQuote.qty} pzas a Q${currentQuote.cuttingRateUnit.toFixed(2)} c/u)\n`
+        : `• *Corte / Acabado:* No (Entrega estándar en rollo continuo)\n`;
+
       const text = `¡Hola Kroma Lab! 🚀\n\nQuisiera consultar una cotización de impresión UV DTF:\n` +
         `• *Tamaño de sticker:* ${currentQuote.widthCm} x ${currentQuote.heightCm} cm\n` +
         `• *Cantidad solicitada:* ${currentQuote.qty} stickers\n` +
         `• *Acomodo:* ${currentQuote.stickersPerRow} stickers por fila\n` +
         `• *Metros requeridos:* ${currentQuote.billableMeters.toFixed(2)} m\n` +
-        `• *Tarifa:* Q${currentQuote.tierRate.toFixed(2)} / m\n` +
-        `• *Total aproximado:* Q${currentQuote.totalPriceQ.toFixed(2)}\n\n` +
+        `• *Tarifa material:* Q${currentQuote.tierRate.toFixed(2)} / m\n` +
+        cuttingText +
+        `• *Total estimado:* Q${currentQuote.totalPriceQ.toFixed(2)}\n\n` +
         `¿Qué disponibilidad tienen para entrega esta semana?`;
 
       const url = `https://wa.me/${BUSINESS_CONFIG.phoneWhatsApp}?text=${encodeURIComponent(text)}`;
@@ -2574,6 +2872,9 @@
       const address = document.getElementById("clientAddress").value.trim() || "Por definir";
       const notes = document.getElementById("transparencyNotes").value.trim() || "Sin notas adicionales";
       const fileInfo = selectedFile ? selectedFile.name : "Adjunto por este chat";
+      const cuttingText = currentQuote.includeCutting
+        ? `Sí, con corte recto de precisión (+Q${currentQuote.cuttingTotalQ.toFixed(2)})`
+        : `No, entrega estándar en rollo continuo`;
 
       const text = `¡Hola Miguel / Kroma Lab! 📦\n\nQuiero confirmar el siguiente pedido de stickers UV DTF:\n\n` +
         `👤 *Cliente:* ${name}\n` +
@@ -2581,6 +2882,7 @@
         `📐 *Medida:* ${currentQuote.widthCm} x ${currentQuote.heightCm} cm\n` +
         `🔢 *Cantidad:* ${currentQuote.qty} stickers\n` +
         `📏 *Metros lineales:* ${currentQuote.billableMeters.toFixed(2)} m\n` +
+        `✂️ *Corte individual:* ${cuttingText}\n` +
         `💰 *Total a pagar:* Q${currentQuote.totalPriceQ.toFixed(2)}\n` +
         `📁 *Archivo de diseño:* ${fileInfo}\n` +
         `📝 *Notas de transparencia:* ${notes}\n\n` +
@@ -2603,8 +2905,9 @@
     function openOrderModal(order) {
       const modal = document.getElementById("orderModal");
       const summaryText = document.getElementById("modalOrderSummary");
+      const cutDesc = order.withCutting ? ` (Incluye corte recto individual: +Q${order.cuttingCostQ.toFixed(2)})` : ` (En rollo continuo)`;
       summaryText.innerHTML = `Orden <strong>#${order.orderId}</strong> registrada para <strong>${order.name}</strong>.<br>` +
-        `Total: <strong>Q${order.totalQ.toFixed(2)}</strong> (${order.qty} stickers de ${order.width}x${order.height} cm).<br><br>` +
+        `Total: <strong>Q${order.totalQ.toFixed(2)}</strong> (${order.qty} stickers de ${order.width}x${order.height} cm)${cutDesc}.<br><br>` +
         `Haz clic en el botón a continuación para enviar tu comprobante y archivo directamente a nuestro WhatsApp.`;
       modal.classList.add("open");
     }
